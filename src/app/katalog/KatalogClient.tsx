@@ -209,7 +209,7 @@ export default function KatalogClient() {
             >
               <div className="shot aspect-[4/5] flex items-center justify-center">
                 <div className={`glow ${p.glow}`}></div>
-                <img src={p.img} alt={p.name} className="relative w-full h-full object-contain p-3 sm:p-5" />
+                <img src={p.img} alt={p.name} className="relative w-full h-full object-contain p-1.5 sm:p-5" />
               </div>
               <h3 className="display mt-4 md:mt-6 text-lg sm:text-2xl md:text-[28px]">{p.name}</h3>
               <div className="mt-3 md:mt-5 underline"></div>
@@ -235,7 +235,7 @@ export default function KatalogClient() {
 
       {/* FOOTER */}
       <footer className="border-t hair">
-        <div className="mx-auto max-w-[1400px] px-6 md:px-10 py-8 flex flex-wrap gap-4 justify-between eyebrow">
+        <div className="mx-auto max-w-[1400px] px-6 md:px-10 py-8 flex flex-col sm:flex-row flex-wrap gap-2 sm:gap-4 justify-between items-center sm:items-center eyebrow text-center sm:text-left">
           <span>Eira Project — Fantasy Jersey Specialist</span>
           <span>© 2026</span>
         </div>
@@ -270,7 +270,7 @@ export default function KatalogClient() {
               <img
                 src={p.views[view].src}
                 alt={`${p.name} — ${p.views[view].v}`}
-                className={`relative w-full h-full object-contain p-5 md:p-8 ${imgShown ? "shown" : ""}`}
+                className={`relative w-full h-full object-contain p-3 md:p-8 ${imgShown ? "shown" : ""}`}
               />
             </div>
             <div ref={thumbsRef} className="mt-2.5 grid grid-cols-3 gap-2.5" onClick={(e) => {
