@@ -317,10 +317,10 @@ export default function KatalogClient() {
               </p>
             </div>
 
-            <div className="mt-9 border-t hair pt-7">
+            <div className="mt-9 border-t hair pt-7 hidden lg:block">
               <p className="eyebrow">Price</p>
               <p className="mt-2 text-[32px] font-semibold tracking-tight">{p.price}</p>
-              <div className="mt-7 flex flex-col gap-3">
+              <div className="mt-7 flex flex-col sm:flex-row gap-3">
                 <a href={waLink(p, size)} target="_blank" rel="noopener" className="gold-btn px-9 py-4 text-center">
                   Order via WhatsApp →
                 </a>
