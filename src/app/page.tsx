@@ -232,8 +232,8 @@ export default function Home() {
           className="reveal mt-8 flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-[11px] font-light uppercase tracking-[0.22em] text-neutral-500"
           data-delay="500"
         >
-          <li>✓ Nama &amp; nomor gratis</li>
           <li>✓ Desain eksklusif</li>
+          <li>✓ Koleksi baru tiap bulan</li>
           <li>✓ Fast response</li>
         </ul>
 
