@@ -263,8 +263,8 @@ export default function KatalogClient() {
           </div>
         </div>
 
-        <div className="mx-auto max-w-[1400px] px-5 sm:px-6 md:px-10 pt-5 pb-14 md:py-14 gap-8 lg:gap-20 rise detail-grid">
-          <div>
+        <div className="mx-auto max-w-[1400px] px-5 sm:px-6 md:px-10 pt-5 pb-28 md:py-14 lg:pb-16 gap-8 lg:gap-20 rise detail-grid">
+          <div className="lg:sticky lg:top-24 lg:self-start">
             <div className="shot aspect-[4/5] sm:aspect-square lg:aspect-[4/5] flex items-center justify-center">
               <div className={`glow ${p.glow}`}></div>
               <img
@@ -317,7 +317,7 @@ export default function KatalogClient() {
               </p>
             </div>
 
-            <div className="mt-9 border-t hair pt-7">
+            <div className="mt-9 border-t hair pt-7 hidden lg:block">
               <p className="eyebrow">Price</p>
               <p className="mt-2 text-[32px] font-semibold tracking-tight">{p.price}</p>
               <div className="mt-7 flex flex-col sm:flex-row gap-3">
@@ -328,6 +328,17 @@ export default function KatalogClient() {
               </div>
             </div>
           </div>
+        </div>
+
+        {/* MOBILE FIXED BOTTOM BAR */}
+        <div className="lg:hidden fixed bottom-0 inset-x-0 z-20 border-t hair bg-[#090A0C]/95 backdrop-blur px-5 py-3.5 flex items-center gap-4">
+          <div className="shrink-0">
+            <p className="eyebrow leading-none">Price</p>
+            <p className="mt-1.5 text-lg font-semibold leading-none">{p.price}</p>
+          </div>
+          <a href={waLink(p, size)} target="_blank" rel="noopener" className="gold-btn flex-1 px-3 py-4 text-center whitespace-nowrap">
+            Order via WhatsApp →
+          </a>
         </div>
       </div>
 
