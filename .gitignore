@@ -1,0 +1,24 @@
+# dependencies
+node_modules/
+
+# build output
+.next/
+out/
+
+# misc
+.DS_Store
+*.pem
+.env*.local
+
+# debug
+npm-debug.log*
+
+# vercel
+.vercel
+
+# reference files (not part of the project)
+/Katalog/
+/pages-original-html/
+/assets/
+/fonts/
+/images/
