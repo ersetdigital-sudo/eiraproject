@@ -198,7 +198,7 @@ export default function KatalogClient() {
 
       {/* GRID */}
       <main className="mx-auto max-w-[1400px] px-6 md:px-10 py-12 md:py-16">
-        <div className="grid grid-cols-2 lg:grid-cols-3 gap-x-4 sm:gap-x-8 gap-y-10 md:gap-y-16" id="grid">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-4 sm:gap-x-8 gap-y-10 md:gap-y-16" id="grid">
           {PRODUCTS.map((p, i) => (
             <article
               key={i}
@@ -209,7 +209,7 @@ export default function KatalogClient() {
             >
               <div className="shot aspect-[4/5] flex items-center justify-center">
                 <div className={`glow ${p.glow}`}></div>
-                <img src={p.img} alt={p.name} className="relative w-full h-full object-contain p-1.5 sm:p-5" />
+                <img src={p.img} alt={p.name} className="relative w-full h-full object-contain p-3 sm:p-5" />
               </div>
               <h3 className="display mt-4 md:mt-6 text-lg sm:text-2xl md:text-[28px]">{p.name}</h3>
               <div className="mt-3 md:mt-5 underline"></div>
