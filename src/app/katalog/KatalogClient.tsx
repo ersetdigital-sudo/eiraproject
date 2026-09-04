@@ -264,7 +264,7 @@ export default function KatalogClient() {
         </div>
 
         <div className="mx-auto max-w-[1400px] px-5 sm:px-6 md:px-10 pt-5 pb-14 md:py-14 gap-8 lg:gap-20 rise detail-grid">
-          <div className="lg:sticky lg:top-24 lg:self-start">
+          <div>
             <div className="shot aspect-[4/5] sm:aspect-square lg:aspect-[4/5] flex items-center justify-center">
               <div className={`glow ${p.glow}`}></div>
               <img
