@@ -120,18 +120,12 @@ export default function KatalogClient() {
       }
       if (!detailOpen) return;
       if (e.key === "Escape") closeDetail();
-      if (e.key === "ArrowRight") {
-        setView((v) => (v + 1) % product.views.length);
-        setImgShown(false);
-      }
-      if (e.key === "ArrowLeft") {
-        setView((v) => (v - 1 + product.views.length) % product.views.length);
-        setImgShown(false);
-      }
+      if (e.key === "ArrowRight") render(cur + 1);
+      if (e.key === "ArrowLeft") render(cur - 1);
     };
     document.addEventListener("keydown", handler);
     return () => document.removeEventListener("keydown", handler);
-  }, [detailOpen, guideOpen, product.views.length, closeDetail]);
+  }, [detailOpen, guideOpen, cur, render, closeDetail]);
 
   // Deep link
   useEffect(() => {
@@ -270,45 +264,14 @@ export default function KatalogClient() {
         </div>
 
         <div className="mx-auto max-w-[1400px] px-5 sm:px-6 md:px-10 pt-5 pb-28 md:py-14 lg:pb-16 grid grid-cols-1 lg:grid-cols-[1.1fr_.9fr] gap-8 lg:gap-20 rise">
-          <div className="lg:sticky lg:top-24 lg:self-start group">
-            <div className="shot aspect-[4/5] sm:aspect-square lg:aspect-[4/5] flex items-center justify-center relative">
+          <div className="lg:sticky lg:top-24 lg:self-start">
+            <div className="shot aspect-[4/5] sm:aspect-square lg:aspect-[4/5] flex items-center justify-center">
               <div className={`glow ${p.glow}`}></div>
               <img
                 src={p.views[view].src}
                 alt={`${p.name} — ${p.views[view].v}`}
                 className={`relative w-full h-full object-contain p-5 md:p-8 ${imgShown ? "shown" : ""}`}
               />
-              {/* Image counter */}
-              <span className="absolute top-3 right-3 text-[10px] tracking-[.18em] uppercase text-[#92939A] bg-[#090A0C]/70 px-2 py-1 rounded">
-                {view + 1} / {p.views.length}
-              </span>
-              {/* Prev/Next arrows */}
-              {p.views.length > 1 && (
-                <>
-                  <button
-                    className="absolute left-2 top-1/2 -translate-y-1/2 w-8 h-8 flex items-center justify-center rounded-full bg-[#090A0C]/60 text-[#92939A] hover:text-[#C8A96B] hover:bg-[#090A0C]/80 transition-all text-lg opacity-0 hover:opacity-100 group-hover:opacity-100"
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      setView((v) => (v - 1 + p.views.length) % p.views.length);
-                      setImgShown(false);
-                    }}
-                    aria-label="Previous image"
-                  >
-                    ‹
-                  </button>
-                  <button
-                    className="absolute right-2 top-1/2 -translate-y-1/2 w-8 h-8 flex items-center justify-center rounded-full bg-[#090A0C]/60 text-[#92939A] hover:text-[#C8A96B] hover:bg-[#090A0C]/80 transition-all text-lg opacity-0 hover:opacity-100 group-hover:opacity-100"
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      setView((v) => (v + 1) % p.views.length);
-                      setImgShown(false);
-                    }}
-                    aria-label="Next image"
-                  >
-                    ›
-                  </button>
-                </>
-              )}
             </div>
             <div ref={thumbsRef} className="mt-2.5 grid grid-cols-3 gap-2.5" onClick={(e) => {
               const b = (e.target as HTMLElement).closest("[data-v]");
