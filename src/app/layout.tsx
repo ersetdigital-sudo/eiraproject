@@ -8,7 +8,7 @@ export const metadata: Metadata = {
     "Jersey custom dengan desain eksklusif untuk Team, Racing, Football, dan Community. Design by request — order langsung via WhatsApp.",
   icons: {
     icon: [
-      { url: "/favicon.svg", type: "image/svg+xml" },
+      { url: "/favicon.png", type: "image/png", sizes: "512x512" },
       { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
       { url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
     ],
