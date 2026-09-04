@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
+import PageTransition from "@/components/PageTransition";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://eiraproject.id"),
@@ -41,7 +42,7 @@ export default function RootLayout({
       <body className="min-h-screen">
         <div className="aura"></div>
         <div className="grain"></div>
-        {children}
+        <PageTransition>{children}</PageTransition>
       </body>
     </html>
   );

@@ -290,3 +290,9 @@ body{background:var(--bg);color:var(--ink);font-family:"Archivo",system-ui,sans-
 .guide-overlay.open .guide-box{transform:none}
 
 ::selection{background:var(--gold);color:#0B0B0C}
+
+/* Page transition */
+.page-transition{transition:opacity .2s ease,transform .2s ease}
+.page-transition[data-state="exit"]{opacity:0;transform:translateY(-10px)}
+.page-transition[data-state="enter"]{opacity:0;transform:translateY(10px)}
+.page-transition[data-state="visible"]{opacity:1;transform:translateY(0)}
