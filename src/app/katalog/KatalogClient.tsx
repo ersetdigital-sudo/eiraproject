@@ -68,7 +68,6 @@ export default function KatalogClient() {
       <header className="sticky top-0 z-30 border-b border-[#1b181f] bg-[#0a0a0a]/85 backdrop-blur">
         <div className="mx-auto max-w-6xl px-6 h-16 flex items-center justify-between">
           <a href="/" className="flex items-center gap-3">
-            <img src="/images/5e21403a-2272-41f3-8998-91afe658fb87.png" alt="Eira Project" className="h-7 w-7 rounded-full" />
             <span className="disp track text-[11px] font-semibold uppercase">Eira Project</span>
           </a>
           <nav className="hidden md:flex items-center gap-9 text-[10px] track uppercase text-[var(--muted)]">
