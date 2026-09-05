@@ -215,7 +215,7 @@ export default function ProductFormPage() {
   const labelClass = "block text-[10px] track uppercase text-[var(--muted)] mb-1.5";
 
   return (
-    <div className="max-w-2xl">
+    <div className="admin-page-enter max-w-2xl">
       <div className="flex items-center gap-3 mb-8">
         <button onClick={() => router.back()} className="p-2 rounded-lg text-[var(--muted)] hover:text-[var(--ink)] hover:bg-white/5 transition-colors cursor-pointer">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="15 18 9 12 15 6"/></svg>

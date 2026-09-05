@@ -171,9 +171,15 @@ export default function EditProductPage() {
 
   if (loading) {
     return (
-      <div className="space-y-4">
-        <div className="h-8 w-48 rounded-lg bg-white/5 animate-pulse" />
-        <div className="h-64 rounded-xl bg-white/5 animate-pulse" />
+      <div className="admin-page-enter max-w-2xl">
+        <div className="flex items-center gap-3 mb-8">
+          <div className="admin-skeleton h-8 w-8 rounded-lg" />
+          <div className="admin-skeleton h-6 w-32" />
+        </div>
+        <div className="space-y-4">
+          <div className="admin-skeleton h-64 rounded-xl" />
+          <div className="admin-skeleton h-48 rounded-xl" />
+        </div>
       </div>
     );
   }
@@ -183,7 +189,7 @@ export default function EditProductPage() {
   const labelClass = "block text-[10px] track uppercase text-[var(--muted)] mb-1.5";
 
   return (
-    <div className="max-w-2xl">
+    <div className="admin-page-enter max-w-2xl">
       <div className="flex items-center gap-3 mb-8">
         <button onClick={() => router.back()} className="p-2 rounded-lg text-[var(--muted)] hover:text-[var(--ink)] hover:bg-white/5 transition-colors cursor-pointer">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
