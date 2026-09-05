@@ -2,14 +2,14 @@ import type { Metadata } from "next";
 import KatalogClient from "./KatalogClient";
 
 export const metadata: Metadata = {
-  title: "Katalog Fantasy Jersey — Eira Project",
+  title: "Katalog — Eira Project",
   description:
-    "Katalog fantasy jersey Eira Project. Desain eksklusif, nama & nomor gratis. Order langsung via WhatsApp.",
+    "Jersey fantasy dengan desain eksklusif. Koleksi baru setiap bulan.",
   openGraph: {
     type: "website",
-    title: "Katalog Fantasy Jersey — Eira Project",
+    title: "Katalog — Eira Project",
     description:
-      "Desain eksklusif, koleksi baru setiap bulan. Order langsung via WhatsApp.",
+      "Jersey fantasy dengan desain eksklusif. Koleksi baru setiap bulan.",
   },
   twitter: { card: "summary_large_image" },
 };

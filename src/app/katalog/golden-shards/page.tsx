@@ -3,7 +3,7 @@ import ProductDetailClient from "../ProductDetailClient";
 
 export const metadata: Metadata = {
   title: "Golden Shards — Eira Project",
-  description: "Jersey fantasy dengan pecahan grafis tajam dan aksen emas. Dicetak full-print pada bahan Milano Dryfit.",
+  description: "Jersey fantasy Golden Shards — desain eksklusif, dicetak full-print pada bahan Milano Dryfit.",
 };
 
 const product = {

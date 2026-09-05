@@ -3,7 +3,7 @@ import ProductDetailClient from "../ProductDetailClient";
 
 export const metadata: Metadata = {
   title: "Nebula Flux — Eira Project",
-  description: "Jersey fantasy dengan motif marmer bergelombang dan gradasi lembut. Dicetak full-print pada bahan Milano Dryfit.",
+  description: "Jersey fantasy Nebula Flux — desain eksklusif, dicetak full-print pada bahan Milano Dryfit.",
 };
 
 const product = {

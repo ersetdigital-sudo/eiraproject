@@ -3,7 +3,7 @@ import ProductDetailClient from "../ProductDetailClient";
 
 export const metadata: Metadata = {
   title: "Velocity Blaze — Eira Project",
-  description: "Jersey fantasy dengan grafis dinamis dan detail rici. Dicetak full-print pada bahan Milano Dryfit.",
+  description: "Jersey fantasy Velocity Blaze — desain eksklusif, dicetak full-print pada bahan Milano Dryfit.",
 };
 
 const product = {

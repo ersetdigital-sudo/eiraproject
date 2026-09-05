@@ -8,9 +8,9 @@ const geist = Geist({subsets:['latin'],variable:'--font-sans'});
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://eiraproject.id"),
-  title: "Eira Project — Custom Jersey & Apparel",
+  title: "Eira Project — Fantasy Jersey Specialist",
   description:
-    "Jersey custom dengan desain eksklusif untuk Team, Racing, Football, dan Community. Design by request — order langsung via WhatsApp.",
+    "Jersey fantasy dengan desain eksklusif. Koleksi baru setiap bulan.",
   icons: {
     icon: [
       { url: "/favicon.png", type: "image/png", sizes: "512x512" },
@@ -22,13 +22,16 @@ export const metadata: Metadata = {
   manifest: "/site.webmanifest",
   openGraph: {
     type: "website",
-    title: "Eira Project — Custom Jersey & Apparel",
+    title: "Eira Project — Fantasy Jersey Specialist",
     description:
-      "Jersey custom desain eksklusif — Team • Racing • Football • Community. Design by request.",
+      "Jersey fantasy dengan desain eksklusif. Koleksi baru setiap bulan.",
     images: ["/images/6e97a62b-51e6-4309-80b4-4b1b3de5ae73.jpg"],
   },
   twitter: {
     card: "summary_large_image",
+    title: "Eira Project — Fantasy Jersey Specialist",
+    description:
+      "Jersey fantasy dengan desain eksklusif. Koleksi baru setiap bulan.",
   },
 };
 
