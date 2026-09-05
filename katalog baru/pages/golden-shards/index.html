@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="id"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Golden Shards — Eira Project</title>
+<link rel="stylesheet" href="/assets/theme.css">
+<script src="https://cdn.moda.app/runtime-libs/tailwind-browser-4.1.13-index.global.min.js"></script><style data-moda-export-fonts="true">@font-face { font-family: 'Sora'; src: url("../../fonts/sora-wght--thin.ttf") format("truetype"); font-style: normal; font-weight: 100; font-display: swap; }
+@font-face { font-family: 'Sora'; src: url("../../fonts/sora-wght--extralight.ttf") format("truetype"); font-style: normal; font-weight: 200; font-display: swap; }
+@font-face { font-family: 'Sora'; src: url("../../fonts/sora-wght--light.ttf") format("truetype"); font-style: normal; font-weight: 300; font-display: swap; }
+@font-face { font-family: 'Sora'; src: url("../../fonts/sora-wght--regular.ttf") format("truetype"); font-style: normal; font-weight: 400; font-display: swap; }
+@font-face { font-family: 'Sora'; src: url("../../fonts/sora-wght--medium.ttf") format("truetype"); font-style: normal; font-weight: 500; font-display: swap; }
+@font-face { font-family: 'Sora'; src: url("../../fonts/sora-wght--semibold.ttf") format("truetype"); font-style: normal; font-weight: 600; font-display: swap; }
+@font-face { font-family: 'Sora'; src: url("../../fonts/sora-wght--bold.ttf") format("truetype"); font-style: normal; font-weight: 700; font-display: swap; }
+@font-face { font-family: 'Sora'; src: url("../../fonts/sora-wght--extrabold.ttf") format("truetype"); font-style: normal; font-weight: 800; font-display: swap; }
+@font-face { font-family: 'Archivo'; src: url("../../fonts/archivo-thin.ttf") format("truetype"); font-style: normal; font-weight: 100; font-display: swap; }
+@font-face { font-family: 'Archivo'; src: url("../../fonts/archivo-thinitalic.ttf") format("truetype"); font-style: italic; font-weight: 100; font-display: swap; }
+@font-face { font-family: 'Archivo'; src: url("../../fonts/archivo-extralight.ttf") format("truetype"); font-style: normal; font-weight: 200; font-display: swap; }
+@font-face { font-family: 'Archivo'; src: url("../../fonts/archivo-extralightitalic.ttf") format("truetype"); font-style: italic; font-weight: 200; font-display: swap; }
+@font-face { font-family: 'Archivo'; src: url("../../fonts/archivo-light.ttf") format("truetype"); font-style: normal; font-weight: 300; font-display: swap; }
+@font-face { font-family: 'Archivo'; src: url("../../fonts/archivo-lightitalic.ttf") format("truetype"); font-style: italic; font-weight: 300; font-display: swap; }
+@font-face { font-family: 'Archivo'; src: url("../../fonts/archivo-regular.ttf") format("truetype"); font-style: normal; font-weight: 400; font-display: swap; }
+@font-face { font-family: 'Archivo'; src: url("../../fonts/archivo-italic.ttf") format("truetype"); font-style: italic; font-weight: 400; font-display: swap; }
+@font-face { font-family: 'Archivo'; src: url("../../fonts/archivo-medium.ttf") format("truetype"); font-style: normal; font-weight: 500; font-display: swap; }
+@font-face { font-family: 'Archivo'; src: url("../../fonts/archivo-mediumitalic.ttf") format("truetype"); font-style: italic; font-weight: 500; font-display: swap; }
+@font-face { font-family: 'Archivo'; src: url("../../fonts/archivo-semibold.ttf") format("truetype"); font-style: normal; font-weight: 600; font-display: swap; }
+@font-face { font-family: 'Archivo'; src: url("../../fonts/archivo-semibolditalic.ttf") format("truetype"); font-style: italic; font-weight: 600; font-display: swap; }
+@font-face { font-family: 'Archivo'; src: url("../../fonts/archivo-bold.ttf") format("truetype"); font-style: normal; font-weight: 700; font-display: swap; }
+@font-face { font-family: 'Archivo'; src: url("../../fonts/archivo-bolditalic.ttf") format("truetype"); font-style: italic; font-weight: 700; font-display: swap; }
+@font-face { font-family: 'Archivo'; src: url("../../fonts/archivo-extrabold.ttf") format("truetype"); font-style: normal; font-weight: 800; font-display: swap; }
+@font-face { font-family: 'Archivo'; src: url("../../fonts/archivo-extrabolditalic.ttf") format("truetype"); font-style: italic; font-weight: 800; font-display: swap; }
+@font-face { font-family: 'Archivo'; src: url("../../fonts/archivo-black.ttf") format("truetype"); font-style: normal; font-weight: 900; font-display: swap; }
+@font-face { font-family: 'Archivo'; src: url("../../fonts/archivo-blackitalic.ttf") format("truetype"); font-style: italic; font-weight: 900; font-display: swap; }</style></head>
+<body class="min-h-screen">
+
+<header class="sticky top-0 z-30 border-b border-[#1b181f] bg-[#0a0a0a]/85 backdrop-blur">
+  <div class="mx-auto max-w-6xl px-6 h-16 flex items-center justify-between">
+    <a href="/" class="flex items-center gap-3">
+      <img src="../../images/5e21403a-2272-41f3-8998-91afe658fb87.png" alt="Eira Project" class="h-7 w-7 rounded-full">
+      <span class="disp track text-[11px] font-semibold uppercase">Eira Project</span>
+    </a>
+    <nav class="hidden md:flex items-center gap-9 text-[10px] track uppercase text-[var(--muted)]">
+      <a href="/" class="text-[var(--ink)]">Katalog</a>
+      <a href="#" class="hover:text-[var(--ink)] transition">Custom</a>
+      <a href="#" class="size-toggle hover:text-[var(--ink)] transition">Size Guide</a>
+      <a href="#" class="hover:text-[var(--ink)] transition">Tentang</a>
+    </nav>
+    <a href="#" class="rounded-full border border-[#2e2a34] px-5 py-2 text-[10px] track uppercase text-[var(--ink)] transition hover:border-[var(--gold)] hover:text-[var(--gold)]">Pre-Order</a>
+  </div>
+</header>
+
+<main class="mx-auto max-w-6xl px-6 pt-10 pb-20">
+  <p class="text-[10px] track uppercase text-[var(--muted)]">
+    <a href="/" class="hover:text-[var(--ink)]">← Katalog</a> / Desain Terbaru / <span class="text-[var(--ink)]">Golden Shards</span>
+  </p>
+
+  <div class="mt-8 grid grid-cols-1 lg:grid-cols-[1.05fr_1fr] gap-10 lg:gap-16">
+    <div>
+      <div class="stage overflow-hidden">
+        <img id="main" src="../../images/75c59814-6786-48b7-a111-d846c580a0a2.png" alt="Golden Shards" class="w-full aspect-square object-cover">
+      </div>
+      <div class="mt-4 grid grid-cols-4 gap-3">
+        <img class="thumb aspect-square w-full object-cover" data-active="true" src="../../images/75c59814-6786-48b7-a111-d846c580a0a2.png" alt="Tampak depan">
+        <img class="thumb aspect-square w-full object-cover" src="../../images/9ac8e2ce-b1f6-4853-b56b-cd1e90a70d2d.png" alt="Tampak samping">
+        <img class="thumb aspect-square w-full object-cover" src="../../images/5a185889-bc31-46c1-9cb5-7d795094036b.png" alt="Detail bahan">
+        <img class="thumb aspect-square w-full object-cover" src="../../images/db45a9f9-af41-4cad-9611-6d2be74937af.png" alt="Tampak alternatif">
+      </div>
+    </div>
+
+    <div class="lg:pt-2">
+      <p class="flex items-center gap-2 text-[10px] track uppercase text-[var(--muted)]">
+        <span class="h-1.5 w-1.5 rounded-full bg-[var(--gold)]"></span> Desain Terbaru · Limited
+      </p>
+
+      <h1 class="disp mt-5 text-4xl sm:text-5xl font-extrabold uppercase leading-[1.05]">Golden<br>Shards</h1>
+
+      <p class="mt-6 max-w-md text-[13px] leading-relaxed text-[var(--muted)]">
+        Jersey fantasy dengan pecahan grafis tajam dan aksen emas. Dicetak full-print pada bahan
+        Milano Dryfit, jahitan rapi, siap dipakai main atau harian.
+      </p>
+
+      <p class="disp mt-7 text-3xl font-bold">Rp 195.000</p>
+
+      <p class="mt-8 text-[10px] track uppercase text-[var(--muted)]">Pilih Ukuran — Oversize Fit</p>
+      <div class="mt-3 flex flex-wrap gap-2">
+        <button class="size px-6 py-2.5 text-[11px] track uppercase">S</button>
+        <button class="size px-6 py-2.5 text-[11px] track uppercase" data-active="true">M</button>
+        <button class="size px-6 py-2.5 text-[11px] track uppercase">L</button>
+        <button class="size px-6 py-2.5 text-[11px] track uppercase">XL</button>
+        <button class="size px-6 py-2.5 text-[11px] track uppercase">2XL</button>
+      </div>
+
+      <div class="mt-7 flex flex-col sm:flex-row gap-3">
+        <a href="#" class="flex-1 rounded-full bg-[var(--ink)] px-8 py-3.5 text-center text-[10px] track uppercase text-[#0a0a0a] transition hover:bg-[var(--gold)]">Order via WhatsApp →</a>
+        <a href="#" class="size-toggle rounded-full border border-[#2e2a34] px-8 py-3.5 text-center text-[10px] track uppercase text-[var(--ink)] transition hover:border-[var(--gold)] hover:text-[var(--gold)]">Size Chart</a>
+      </div>
+
+      <div class="mt-9 grid grid-cols-3 gap-6 border-t border-[#1e1b23] pt-6">
+        <div><p class="text-[9px] track uppercase text-[var(--muted)]">Bahan</p><p class="mt-2 text-[13px]">Milano Dryfit</p><p class="mt-1 text-[11px] text-[#6f6b74]">220 gsm</p></div>
+        <div><p class="text-[9px] track uppercase text-[var(--muted)]">Produksi</p><p class="mt-2 text-[13px]">5–7 hari kerja</p><p class="mt-1 text-[11px] text-[#6f6b74]">Pre-order</p></div>
+        <div><p class="text-[9px] track uppercase text-[var(--muted)]">Toleransi</p><p class="mt-2 text-[13px]">1–3 cm</p><p class="mt-1 text-[11px] text-[#6f6b74]">Cucian pertama</p></div>
+      </div>
+    </div>
+  </div>
+
+  <section id="sizechart" class="hidden mt-16">
+    <h2 class="disp track-sm text-[12px] font-semibold uppercase">Size Chart</h2>
+    <div class="stage mt-4 p-6"><img src="../../images/893f43c0-c0d2-4f14-8103-6313203f5042.jpg" alt="Size chart Eira Project" class="mx-auto w-full max-w-lg rounded-xl"></div>
+  </section>
+
+  <nav class="mt-16 flex flex-col sm:flex-row sm:items-center justify-between gap-8 border-t border-[#1e1b23] pt-8">
+    <a href="/nebula-flux" class="group">
+      <p class="text-[10px] track uppercase text-[var(--muted)]">← Sebelumnya</p>
+      <p class="disp mt-2 text-lg font-bold uppercase group-hover:text-[var(--gold)] transition">Nebula Flux</p>
+    </a>
+    <a href="/velocity-blaze" class="group sm:text-right">
+      <p class="text-[10px] track uppercase text-[var(--muted)]">Selanjutnya →</p>
+      <p class="disp mt-2 text-lg font-bold uppercase group-hover:text-[var(--gold)] transition">Velocity Blaze</p>
+    </a>
+  </nav>
+</main>
+
+<footer class="border-t border-[#1a171e]">
+  <div class="mx-auto max-w-6xl px-6 py-10 flex flex-col sm:flex-row items-center justify-between gap-4">
+    <span class="disp track text-[10px] uppercase text-[var(--muted)]">Eira Project — Fantasy Jersey</span>
+    <span class="text-[10px] track uppercase text-[#6f6b74]">Made to order · Milano Dryfit</span>
+  </div>
+</footer>
+
+<script src="/assets/main.js"></script>
+
+</body></html>

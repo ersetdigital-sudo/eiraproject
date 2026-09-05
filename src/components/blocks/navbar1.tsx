@@ -34,7 +34,7 @@ export default function Navbar1({ onSizeGuide }: Navbar1Props) {
         transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
         className={[
           "w-full max-w-5xl rounded-2xl border px-6 flex items-center h-[62px] gap-0 transition-all duration-300",
-          "bg-[#0f0f0f] border-white/10 shadow-[0_8px_32px_rgba(0,0,0,0.45)]",
+          "bg-[#121417] border-white/10 shadow-[0_8px_32px_rgba(0,0,0,0.45)]",
           scrolled ? "shadow-2xl" : "",
         ].join(" ")}
       >
@@ -44,7 +44,7 @@ export default function Navbar1({ onSizeGuide }: Navbar1Props) {
             className="font-bold text-[20px] tracking-tight text-white"
             style={{ fontFamily: "'Syne', sans-serif" }}
           >
-            Eira<span className="text-[#d9b26a]">\</span>Project
+            Eira<span className="text-[#C8A96B]">\</span>Project
           </span>
         </Link>
 
@@ -79,7 +79,7 @@ export default function Navbar1({ onSizeGuide }: Navbar1Props) {
               {activeLink === link.label && (
                 <motion.span
                   layoutId="nav-underline"
-                  className="absolute bottom-0 left-[13px] right-[13px] h-[2px] rounded-t-full bg-[#d9b26a]"
+                  className="absolute bottom-0 left-[13px] right-[13px] h-[2px] rounded-t-full bg-[#C8A96B]"
                   transition={{ type: "spring", stiffness: 400, damping: 30 }}
                 />
               )}
@@ -99,7 +99,7 @@ export default function Navbar1({ onSizeGuide }: Navbar1Props) {
           >
             <Link
               href="#"
-              className="h-[34px] px-4 rounded-[10px] text-[13px] font-semibold flex items-center gap-[6px] transition-opacity duration-200 whitespace-nowrap bg-[#d9b26a] text-[#0f0f0f] hover:opacity-90"
+              className="h-[34px] px-4 rounded-[10px] text-[13px] font-semibold flex items-center gap-[6px] transition-opacity duration-200 whitespace-nowrap bg-[#C8A96B] text-[#090A0C] hover:opacity-90"
             >
               Pre-Order
             </Link>
@@ -135,7 +135,7 @@ export default function Navbar1({ onSizeGuide }: Navbar1Props) {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: -8, scale: 0.97 }}
             transition={{ duration: 0.22, ease: [0.22, 1, 0.36, 1] }}
-            className="absolute top-[72px] left-4 right-4 rounded-2xl border p-4 flex flex-col gap-1 bg-[#0f0f0f] border-white/10 shadow-[0_16px_48px_rgba(0,0,0,0.6)]"
+            className="absolute top-[72px] left-4 right-4 rounded-2xl border p-4 flex flex-col gap-1 bg-[#121417] border-white/10 shadow-[0_16px_48px_rgba(0,0,0,0.6)]"
           >
             {NAV_LINKS.map((link) => (
               <a
@@ -152,7 +152,7 @@ export default function Navbar1({ onSizeGuide }: Navbar1Props) {
                 className={[
                   "px-4 py-3 rounded-xl text-[14px] font-medium transition-all duration-200",
                   activeLink === link.label
-                    ? "bg-amber-400/10 text-[#d9b26a]"
+                    ? "bg-white/5 text-[#C8A96B]"
                     : "text-white/60 hover:text-white hover:bg-white/6",
                 ].join(" ")}
               >
@@ -165,7 +165,7 @@ export default function Navbar1({ onSizeGuide }: Navbar1Props) {
             <div className="flex flex-col gap-2 mt-1 px-0">
               <Link
                 href="#"
-                className="h-10 px-4 rounded-[10px] text-[13px] font-semibold flex items-center gap-2 justify-center bg-[#d9b26a] text-[#0f0f0f]"
+                className="h-10 px-4 rounded-[10px] text-[13px] font-semibold flex items-center gap-2 justify-center bg-[#C8A96B] text-[#090A0C]"
               >
                 Pre-Order
               </Link>

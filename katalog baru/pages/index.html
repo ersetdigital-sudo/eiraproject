@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="id"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Katalog Fantasy Jersey — Eira Project</title>
+<style>
+  :root{
+    --bg:#0a0a0a;
+    --panel:#141116;
+    --panel-2:#100e13;
+    --line:#232027;
+    --ink:#ede8e2;
+    --muted:#8b8790;
+    --gold:#d9b26a;
+  }
+  body{background:var(--bg);color:var(--ink);font-family:"Sora",system-ui,sans-serif;-webkit-font-smoothing:antialiased;}
+  h1,h2,.disp{font-family:"Archivo",system-ui,sans-serif;}
+  .track{letter-spacing:.22em;}
+  .track-sm{letter-spacing:.16em;}
+  .glow{background:radial-gradient(120% 90% at 50% 0%, rgba(217,178,106,.10), rgba(120,60,160,.06) 45%, transparent 70%);}
+  .card{background:linear-gradient(180deg,#16131a 0%,#100e13 100%);border:1px solid var(--line);border-radius:18px;transition:transform .45s cubic-bezier(.2,.7,.3,1),border-color .45s,box-shadow .45s;}
+  .card:hover{transform:translateY(-4px);border-color:#3a3440;box-shadow:0 24px 60px -30px rgba(217,178,106,.35);}
+  .card img{transition:transform .6s cubic-bezier(.2,.7,.3,1);}
+  .card:hover img{transform:scale(1.04);}
+  .cta{opacity:0;transform:translateY(8px);transition:opacity .35s,transform .35s;}
+  .card:hover .cta{opacity:1;transform:translateY(0);}
+  .sold img{filter:grayscale(.55) brightness(.75);}
+  .sold:hover img{filter:grayscale(.3) brightness(.85);}
+  @media (max-width:768px){.cta{opacity:1;transform:none;}}
+</style>
+<script src="https://cdn.moda.app/runtime-libs/tailwind-browser-4.1.13-index.global.min.js"></script><style data-moda-export-fonts="true">@font-face { font-family: 'Sora'; src: url("../fonts/sora-wght--thin.ttf") format("truetype"); font-style: normal; font-weight: 100; font-display: swap; }
+@font-face { font-family: 'Sora'; src: url("../fonts/sora-wght--extralight.ttf") format("truetype"); font-style: normal; font-weight: 200; font-display: swap; }
+@font-face { font-family: 'Sora'; src: url("../fonts/sora-wght--light.ttf") format("truetype"); font-style: normal; font-weight: 300; font-display: swap; }
+@font-face { font-family: 'Sora'; src: url("../fonts/sora-wght--regular.ttf") format("truetype"); font-style: normal; font-weight: 400; font-display: swap; }
+@font-face { font-family: 'Sora'; src: url("../fonts/sora-wght--medium.ttf") format("truetype"); font-style: normal; font-weight: 500; font-display: swap; }
+@font-face { font-family: 'Sora'; src: url("../fonts/sora-wght--semibold.ttf") format("truetype"); font-style: normal; font-weight: 600; font-display: swap; }
+@font-face { font-family: 'Sora'; src: url("../fonts/sora-wght--bold.ttf") format("truetype"); font-style: normal; font-weight: 700; font-display: swap; }
+@font-face { font-family: 'Sora'; src: url("../fonts/sora-wght--extrabold.ttf") format("truetype"); font-style: normal; font-weight: 800; font-display: swap; }
+@font-face { font-family: 'Archivo'; src: url("../fonts/archivo-thin.ttf") format("truetype"); font-style: normal; font-weight: 100; font-display: swap; }
+@font-face { font-family: 'Archivo'; src: url("../fonts/archivo-thinitalic.ttf") format("truetype"); font-style: italic; font-weight: 100; font-display: swap; }
+@font-face { font-family: 'Archivo'; src: url("../fonts/archivo-extralight.ttf") format("truetype"); font-style: normal; font-weight: 200; font-display: swap; }
+@font-face { font-family: 'Archivo'; src: url("../fonts/archivo-extralightitalic.ttf") format("truetype"); font-style: italic; font-weight: 200; font-display: swap; }
+@font-face { font-family: 'Archivo'; src: url("../fonts/archivo-light.ttf") format("truetype"); font-style: normal; font-weight: 300; font-display: swap; }
+@font-face { font-family: 'Archivo'; src: url("../fonts/archivo-lightitalic.ttf") format("truetype"); font-style: italic; font-weight: 300; font-display: swap; }
+@font-face { font-family: 'Archivo'; src: url("../fonts/archivo-regular.ttf") format("truetype"); font-style: normal; font-weight: 400; font-display: swap; }
+@font-face { font-family: 'Archivo'; src: url("../fonts/archivo-italic.ttf") format("truetype"); font-style: italic; font-weight: 400; font-display: swap; }
+@font-face { font-family: 'Archivo'; src: url("../fonts/archivo-medium.ttf") format("truetype"); font-style: normal; font-weight: 500; font-display: swap; }
+@font-face { font-family: 'Archivo'; src: url("../fonts/archivo-mediumitalic.ttf") format("truetype"); font-style: italic; font-weight: 500; font-display: swap; }
+@font-face { font-family: 'Archivo'; src: url("../fonts/archivo-semibold.ttf") format("truetype"); font-style: normal; font-weight: 600; font-display: swap; }
+@font-face { font-family: 'Archivo'; src: url("../fonts/archivo-semibolditalic.ttf") format("truetype"); font-style: italic; font-weight: 600; font-display: swap; }
+@font-face { font-family: 'Archivo'; src: url("../fonts/archivo-bold.ttf") format("truetype"); font-style: normal; font-weight: 700; font-display: swap; }
+@font-face { font-family: 'Archivo'; src: url("../fonts/archivo-bolditalic.ttf") format("truetype"); font-style: italic; font-weight: 700; font-display: swap; }
+@font-face { font-family: 'Archivo'; src: url("../fonts/archivo-extrabold.ttf") format("truetype"); font-style: normal; font-weight: 800; font-display: swap; }
+@font-face { font-family: 'Archivo'; src: url("../fonts/archivo-extrabolditalic.ttf") format("truetype"); font-style: italic; font-weight: 800; font-display: swap; }
+@font-face { font-family: 'Archivo'; src: url("../fonts/archivo-black.ttf") format("truetype"); font-style: normal; font-weight: 900; font-display: swap; }
+@font-face { font-family: 'Archivo'; src: url("../fonts/archivo-blackitalic.ttf") format("truetype"); font-style: italic; font-weight: 900; font-display: swap; }</style></head>
+<body class="min-h-screen">
+
+<header class="sticky top-0 z-30 border-b border-[#1b181f] bg-[#0a0a0a]/85 backdrop-blur">
+  <div class="mx-auto max-w-6xl px-6 h-16 flex items-center justify-between">
+    <a href="/" class="flex items-center gap-3">
+      <img src="../images/5e21403a-2272-41f3-8998-91afe658fb87.png" alt="Eira Project" class="h-7 w-7 rounded-full">
+      <span class="disp track text-[11px] font-semibold uppercase">Eira Project</span>
+    </a>
+    <nav class="hidden md:flex items-center gap-9 text-[10px] track uppercase text-[var(--muted)]">
+      <a href="#katalog" class="text-[var(--ink)]">Katalog</a>
+      <a href="#" class="hover:text-[var(--ink)] transition">Size Guide</a>
+      <a href="#" class="hover:text-[var(--ink)] transition">Tentang</a>
+    </nav>
+    <label class="flex items-center gap-2 rounded-full border border-[#232027] bg-[#121016] px-4 py-2">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#8b8790" stroke-width="2"><circle cx="11" cy="11" r="7"></circle><path d="m20 20-3.2-3.2"></path></svg>
+      <input placeholder="Cari desain..." class="w-24 sm:w-40 bg-transparent text-[11px] text-[var(--ink)] placeholder-[#6f6b74] outline-none">
+    </label>
+  </div>
+</header>
+
+<section class="glow">
+  <div class="mx-auto max-w-6xl px-6 pt-16 pb-10">
+    <p class="track text-[10px] uppercase text-[var(--muted)]">Koleksi Jersey Fantasy · 24 Desain</p>
+    <h1 class="disp mt-4 text-4xl sm:text-5xl font-extrabold uppercase tracking-tight">Katalog</h1>
+    <p class="mt-4 max-w-md text-[13px] leading-relaxed text-[var(--muted)]">Lihat semua desain jersey fantasy Eira Project.<br>Pilih desain yang kamu suka dan lihat detailnya.</p>
+    <div class="mt-8 h-px w-full bg-[#1e1b23]"></div>
+  </div>
+</section>
+
+<main id="katalog" class="mx-auto max-w-6xl px-6 pb-24">
+
+  <div class="flex items-center justify-end -mt-2">
+    <div class="flex items-center gap-2 rounded-full border border-[#232027] px-4 py-2 text-[10px] track uppercase text-[var(--muted)]">
+      <span>Urut:</span><span class="text-[var(--ink)]">Terbaru</span>
+    </div>
+  </div>
+
+  <!-- DESAIN TERBARU -->
+  <div class="mt-10 flex items-end justify-between">
+    <div>
+      <h2 class="disp track-sm text-[13px] font-semibold uppercase">Desain Terbaru</h2>
+      <p class="mt-2 text-[10px] track uppercase text-[var(--muted)]">3 Desain</p>
+    </div>
+    <span class="text-[10px] track uppercase text-[var(--gold)]">Tersedia</span>
+  </div>
+
+  <div class="mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+
+    <article class="card group overflow-hidden">
+      <div class="relative overflow-hidden rounded-t-[17px] bg-[#0d0b10]">
+        <img src="../images/e4859694-55d7-4fc5-8941-befeb46d1fde.png" alt="Velocity Blaze" class="w-full aspect-[4/5] object-cover">
+        <span class="absolute left-5 top-5 rounded-full border border-[#3a3440] bg-black/50 px-3 py-1 text-[9px] track uppercase text-[var(--gold)]">New</span>
+      </div>
+      <div class="px-6 pb-6 pt-5">
+        <h3 class="disp track-sm text-[12px] font-semibold uppercase">Velocity Blaze</h3>
+        <p class="mt-3 text-[13px] text-[var(--ink)]">Rp 195.000</p>
+        <a href="/velocity-blaze" class="cta mt-4 inline-flex items-center gap-2 text-[10px] track uppercase text-[var(--gold)]">Lihat Detail →</a>
+      </div>
+    </article>
+
+    <article class="card group overflow-hidden">
+      <div class="relative overflow-hidden rounded-t-[17px] bg-[#0d0b10]">
+        <img src="../images/db45a9f9-af41-4cad-9611-6d2be74937af.png" alt="Nebula Flux" class="w-full aspect-[4/5] object-cover">
+        <span class="absolute left-5 top-5 rounded-full border border-[#3a3440] bg-black/50 px-3 py-1 text-[9px] track uppercase text-[var(--gold)]">New</span>
+      </div>
+      <div class="px-6 pb-6 pt-5">
+        <h3 class="disp track-sm text-[12px] font-semibold uppercase">Nebula Flux</h3>
+        <p class="mt-3 text-[13px] text-[var(--ink)]">Rp 195.000</p>
+        <a href="/nebula-flux" class="cta mt-4 inline-flex items-center gap-2 text-[10px] track uppercase text-[var(--gold)]">Lihat Detail →</a>
+      </div>
+    </article>
+
+    <article class="card group overflow-hidden">
+      <div class="relative overflow-hidden rounded-t-[17px] bg-[#0d0b10]">
+        <img src="../images/75c59814-6786-48b7-a111-d846c580a0a2.png" alt="Golden Shards" class="w-full aspect-[4/5] object-cover">
+        <span class="absolute left-5 top-5 rounded-full border border-[#3a3440] bg-black/50 px-3 py-1 text-[9px] track uppercase text-[var(--gold)]">New</span>
+      </div>
+      <div class="px-6 pb-6 pt-5">
+        <h3 class="disp track-sm text-[12px] font-semibold uppercase">Golden Shards</h3>
+        <p class="mt-3 text-[13px] text-[var(--ink)]">Rp 195.000</p>
+        <a href="/golden-shards" class="cta mt-4 inline-flex items-center gap-2 text-[10px] track uppercase text-[var(--gold)]">Lihat Detail →</a>
+      </div>
+    </article>
+  </div>
+
+  <div class="mt-20 h-px w-full bg-[#1a171e]"></div>
+
+  <!-- KOLEKSI SEBELUMNYA -->
+  <div class="mt-12 flex items-end justify-between">
+    <div>
+      <h2 class="disp track-sm text-[13px] font-semibold uppercase text-[var(--muted)]">Koleksi Sebelumnya</h2>
+      <p class="mt-2 text-[10px] track uppercase text-[#6f6b74]">Sudah Habis · 21 Desain</p>
+    </div>
+  </div>
+
+  <div class="mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+    <article class="card sold group overflow-hidden opacity-80">
+      <div class="relative overflow-hidden rounded-t-[17px] bg-[#0c0a0e]">
+        <img src="../images/9ac8e2ce-b1f6-4853-b56b-cd1e90a70d2d.png" alt="Aurora Drift" class="w-full aspect-[4/5] object-cover">
+        <span class="absolute left-5 top-5 rounded-full border border-[#2a262f] bg-black/60 px-3 py-1 text-[9px] track uppercase text-[#8b8790]">Sold Out</span>
+      </div>
+      <div class="px-6 pb-6 pt-5">
+        <h3 class="disp track-sm text-[12px] font-semibold uppercase text-[var(--muted)]">Aurora Drift</h3>
+        <p class="mt-3 text-[13px] text-[#6f6b74] line-through">Rp 195.000</p>
+      </div>
+    </article>
+
+    <article class="card sold group overflow-hidden opacity-80">
+      <div class="relative overflow-hidden rounded-t-[17px] bg-[#0c0a0e]">
+        <img src="../images/db45a9f9-af41-4cad-9611-6d2be74937af.png" alt="Ember Tide" class="w-full aspect-[4/5] object-cover">
+        <span class="absolute left-5 top-5 rounded-full border border-[#2a262f] bg-black/60 px-3 py-1 text-[9px] track uppercase text-[#8b8790]">Sold Out</span>
+      </div>
+      <div class="px-6 pb-6 pt-5">
+        <h3 class="disp track-sm text-[12px] font-semibold uppercase text-[var(--muted)]">Ember Tide</h3>
+        <p class="mt-3 text-[13px] text-[#6f6b74] line-through">Rp 195.000</p>
+      </div>
+    </article>
+
+    <article class="card sold group overflow-hidden opacity-80">
+      <div class="relative overflow-hidden rounded-t-[17px] bg-[#0c0a0e]">
+        <img src="../images/75c59814-6786-48b7-a111-d846c580a0a2.png" alt="Solar Rift" class="w-full aspect-[4/5] object-cover">
+        <span class="absolute left-5 top-5 rounded-full border border-[#2a262f] bg-black/60 px-3 py-1 text-[9px] track uppercase text-[#8b8790]">Sold Out</span>
+      </div>
+      <div class="px-6 pb-6 pt-5">
+        <h3 class="disp track-sm text-[12px] font-semibold uppercase text-[var(--muted)]">Solar Rift</h3>
+        <p class="mt-3 text-[13px] text-[#6f6b74] line-through">Rp 195.000</p>
+      </div>
+    </article>
+
+    <article class="card sold group overflow-hidden opacity-80">
+      <div class="relative overflow-hidden rounded-t-[17px] bg-[#0c0a0e]">
+        <img src="../images/5a185889-bc31-46c1-9cb5-7d795094036b.png" alt="Violet Storm" class="w-full aspect-[4/5] object-cover">
+        <span class="absolute left-5 top-5 rounded-full border border-[#2a262f] bg-black/60 px-3 py-1 text-[9px] track uppercase text-[#8b8790]">Sold Out</span>
+      </div>
+      <div class="px-6 pb-6 pt-5">
+        <h3 class="disp track-sm text-[12px] font-semibold uppercase text-[var(--muted)]">Violet Storm</h3>
+        <p class="mt-3 text-[13px] text-[#6f6b74] line-through">Rp 195.000</p>
+      </div>
+    </article>
+
+    <article class="card sold group overflow-hidden opacity-80">
+      <div class="relative overflow-hidden rounded-t-[17px] bg-[#0c0a0e]">
+        <img src="../images/9ac8e2ce-b1f6-4853-b56b-cd1e90a70d2d.png" alt="Midnight Prism" class="w-full aspect-[4/5] object-cover">
+        <span class="absolute left-5 top-5 rounded-full border border-[#2a262f] bg-black/60 px-3 py-1 text-[9px] track uppercase text-[#8b8790]">Sold Out</span>
+      </div>
+      <div class="px-6 pb-6 pt-5">
+        <h3 class="disp track-sm text-[12px] font-semibold uppercase text-[var(--muted)]">Midnight Prism</h3>
+        <p class="mt-3 text-[13px] text-[#6f6b74] line-through">Rp 195.000</p>
+      </div>
+    </article>
+
+    <article class="card sold group overflow-hidden opacity-80">
+      <div class="relative overflow-hidden rounded-t-[17px] bg-[#0c0a0e]">
+        <img src="../images/db45a9f9-af41-4cad-9611-6d2be74937af.png" alt="Frost Sigil" class="w-full aspect-[4/5] object-cover">
+        <span class="absolute left-5 top-5 rounded-full border border-[#2a262f] bg-black/60 px-3 py-1 text-[9px] track uppercase text-[#8b8790]">Sold Out</span>
+      </div>
+      <div class="px-6 pb-6 pt-5">
+        <h3 class="disp track-sm text-[12px] font-semibold uppercase text-[var(--muted)]">Frost Sigil</h3>
+        <p class="mt-3 text-[13px] text-[#6f6b74] line-through">Rp 195.000</p>
+      </div>
+    </article>
+  </div>
+
+  <div class="mt-14 flex flex-col items-center gap-4">
+    <a href="#" class="rounded-full border border-[#2e2a34] px-8 py-3 text-[10px] track uppercase text-[var(--ink)] transition hover:border-[var(--gold)] hover:text-[var(--gold)]">Muat 9 Desain Lagi</a>
+    <p class="text-[10px] track uppercase text-[#6f6b74]">Menampilkan 9 dari 24 desain</p>
+  </div>
+</main>
+
+<footer class="border-t border-[#1a171e]">
+  <div class="mx-auto max-w-6xl px-6 py-10 flex flex-col sm:flex-row items-center justify-between gap-4">
+    <span class="disp track text-[10px] uppercase text-[var(--muted)]">Eira Project — Fantasy Jersey</span>
+    <span class="text-[10px] track uppercase text-[#6f6b74]">Made to order · Milano Dryfit</span>
+  </div>
+</footer>
+
+
+</body></html>

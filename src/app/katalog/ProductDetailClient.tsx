@@ -46,11 +46,11 @@ export default function ProductDetailClient({ product }: { product: ProductDetai
       <div className="lg:hidden min-h-[100dvh] bg-[var(--bg)]">
         <Navbar1 onSizeGuide={() => setShowSizeChart(true)} />
         {/* Hero Image */}
-        <div className="relative w-full aspect-[4/5] bg-[#0d0b10]">
+        <div className="relative w-full aspect-[4/5] bg-[var(--bg)]">
           <img src={activeImg} alt={product.name} className="w-full h-full object-cover" />
           {/* Back button */}
           <a href="/" className="absolute top-12 left-4 w-10 h-10 flex items-center justify-center rounded-full bg-white/80 backdrop-blur-sm shadow-sm">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0a0a0a" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><path d="M15 6l-6 6 6 6"></path></svg>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#090A0C" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><path d="M15 6l-6 6 6 6"></path></svg>
           </a>
           {/* Gradient overlay */}
           <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-[var(--bg)] to-transparent"></div>
@@ -62,7 +62,7 @@ export default function ProductDetailClient({ product }: { product: ProductDetai
             {product.thumbs.map((t, i) => (
               <img
                 key={i}
-                className={`shrink-0 w-[72px] h-[72px] object-cover rounded-lg border transition${activeImg === t.src ? " border-[var(--gold)] opacity-100" : " border-[#2e2a34] opacity-60"}`}
+                className={`shrink-0 w-[72px] h-[72px] object-cover rounded-lg border transition${activeImg === t.src ? " border-[var(--gold)] opacity-100" : " border-[var(--line)] opacity-60"}`}
                 src={t.src}
                 alt={t.alt}
                 onClick={() => setActiveImg(t.src)}
@@ -107,7 +107,7 @@ export default function ProductDetailClient({ product }: { product: ProductDetai
           </div>
 
           {/* Specs */}
-          <div className="mt-6 grid grid-cols-3 gap-3 border-t border-[#1e1b23] pt-4">
+          <div className="mt-6 grid grid-cols-3 gap-3 border-t border-[var(--line)] pt-4">
             <div><p className="text-[9px] track uppercase text-[var(--muted)]">Bahan</p><p className="mt-1 text-[12px]">Milano Dryfit</p></div>
             <div><p className="text-[9px] track uppercase text-[var(--muted)]">Produksi</p><p className="mt-1 text-[12px]">5–7 hari</p></div>
             <div><p className="text-[9px] track uppercase text-[var(--muted)]">Toleransi</p><p className="mt-1 text-[12px]">1–3 cm</p></div>
@@ -115,8 +115,8 @@ export default function ProductDetailClient({ product }: { product: ProductDetai
         </div>
 
         {/* Sticky Footer */}
-        <div className="fixed bottom-0 inset-x-0 z-50 border-t border-[#1e1b23] bg-[var(--bg)] px-5 py-3 pb-6">
-          <a href={waLink} target="_blank" rel="noopener" className="flex items-center justify-between w-full rounded-2xl bg-[var(--ink)] px-5 py-3.5 text-[#0a0a0a]">
+        <div className="fixed bottom-0 inset-x-0 z-50 border-t border-[var(--line)] bg-[var(--bg)] px-5 py-3 pb-6">
+          <a href={waLink} target="_blank" rel="noopener" className="flex items-center justify-between w-full rounded-2xl bg-[var(--ink)] px-5 py-3.5 text-[#090A0C]">
             <span className="text-[11px] track uppercase font-semibold">Order via WhatsApp</span>
             <span className="text-[13px] font-bold">{product.price}</span>
           </a>
@@ -187,18 +187,18 @@ export default function ProductDetailClient({ product }: { product: ProductDetai
               </div>
 
               <div className="mt-7">
-                <a href={waLink} target="_blank" rel="noopener" className="block w-full rounded-full bg-[var(--ink)] px-8 py-3.5 text-center text-[10px] track uppercase text-[#0a0a0a] transition hover:bg-[var(--gold)]">Order via WhatsApp →</a>
+                <a href={waLink} target="_blank" rel="noopener" className="block w-full rounded-full bg-[var(--ink)] px-8 py-3.5 text-center text-[10px] track uppercase text-[#090A0C] transition hover:bg-[var(--gold)]">Order via WhatsApp →</a>
               </div>
 
-              <div className="mt-9 grid grid-cols-3 gap-6 border-t border-[#1e1b23] pt-6">
-                <div><p className="text-[9px] track uppercase text-[var(--muted)]">Bahan</p><p className="mt-2 text-[13px]">Milano Dryfit</p><p className="mt-1 text-[11px] text-[#6f6b74]">220 gsm</p></div>
-                <div><p className="text-[9px] track uppercase text-[var(--muted)]">Produksi</p><p className="mt-2 text-[13px]">5–7 hari kerja</p><p className="mt-1 text-[11px] text-[#6f6b74]">Pre-order</p></div>
-                <div><p className="text-[9px] track uppercase text-[var(--muted)]">Toleransi</p><p className="mt-2 text-[13px]">1–3 cm</p><p className="mt-1 text-[11px] text-[#6f6b74]">Cucian pertama</p></div>
+              <div className="mt-7 grid grid-cols-3 gap-6 border-t border-[var(--line)] pt-6">
+                <div><p className="text-[9px] track uppercase text-[var(--muted)]">Bahan</p><p className="mt-2 text-[13px] text-[var(--ink)]">Milano Dryfit</p><p className="mt-1 text-[11px] text-[var(--muted)]">220 gsm</p></div>
+                <div><p className="text-[9px] track uppercase text-[var(--muted)]">Produksi</p><p className="mt-2 text-[13px] text-[var(--ink)]">5–7 hari kerja</p><p className="mt-1 text-[11px] text-[var(--muted)]">Pre-order</p></div>
+                <div><p className="text-[9px] track uppercase text-[var(--muted)]">Toleransi</p><p className="mt-2 text-[13px] text-[var(--ink)]">1–3 cm</p><p className="mt-1 text-[11px] text-[var(--muted)]">Cucian pertama</p></div>
               </div>
             </div>
           </div>
 
-          <nav className="mt-16 flex flex-col sm:flex-row sm:items-center justify-between gap-8 border-t border-[#1e1b23] pt-8">
+          <nav className="mt-16 flex flex-col sm:flex-row sm:items-center justify-between gap-8 border-t border-[var(--line)] pt-8">
             <a href={`/katalog/${product.prev.slug}`} className="group">
               <p className="text-[10px] track uppercase text-[var(--muted)]">← Sebelumnya</p>
               <p className="disp mt-2 text-lg font-bold uppercase group-hover:text-[var(--gold)] transition">{product.prev.name}</p>
@@ -210,10 +210,10 @@ export default function ProductDetailClient({ product }: { product: ProductDetai
           </nav>
         </main>
 
-        <footer className="border-t border-[#1a171e]">
+        <footer className="border-t border-[var(--line)]">
           <div className="mx-auto max-w-6xl px-6 py-10 flex flex-col sm:flex-row items-center justify-between gap-4">
             <span className="disp track text-[10px] uppercase text-[var(--muted)]">Eira Project — Fantasy Jersey</span>
-            <span className="text-[10px] track uppercase text-[#6f6b74]">Made to order · Milano Dryfit</span>
+            <span className="text-[10px] track uppercase text-[var(--muted)]">Made to order · Milano Dryfit</span>
           </div>
         </footer>
       </div>
@@ -222,8 +222,8 @@ export default function ProductDetailClient({ product }: { product: ProductDetai
       {showSizeChart && (
         <div className="fixed inset-0 z-80 flex items-center justify-center p-4" onClick={() => setShowSizeChart(false)}>
           <div className="absolute inset-0 bg-[#060708]/85 backdrop-blur-[6px]"></div>
-          <div className="relative w-full max-w-[560px] max-h-[88vh] overflow-y-auto bg-[#111214] border border-[#292B30]" onClick={(e) => e.stopPropagation()}>
-            <div className="flex items-center justify-between gap-4 px-5 sm:px-6 h-14 border-b border-[#292B30]">
+          <div className="relative w-full max-w-[560px] max-h-[88vh] overflow-y-auto bg-[var(--panel)] border border-[var(--line)]" onClick={(e) => e.stopPropagation()}>
+            <div className="flex items-center justify-between gap-4 px-5 sm:px-6 h-14 border-b border-[var(--line)]">
               <p className="text-[11px] track uppercase text-[var(--ink)]">Size Guide</p>
               <button type="button" className="text-[11px] track uppercase text-[var(--gold)] hover:opacity-75 transition" onClick={() => setShowSizeChart(false)}>Close ✕</button>
             </div>
