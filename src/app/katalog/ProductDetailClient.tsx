@@ -37,18 +37,19 @@ export default function ProductDetailClient({ product }: { product: ProductDetai
     return () => { clearTimeout(timer); io.disconnect(); };
   }, []);
 
+  const waLink = `https://wa.me/6282299849418?text=${encodeURIComponent(`Halo Eira Project! Saya tertarik dengan ${product.name} ukuran ${activeSize}. Boleh minta info harga & ukuran?`)}`;
+
   return (
     <>
-      {/* HEADER */}
       <header className="sticky top-0 z-30 border-b border-[#1b181f] bg-[#0a0a0a]/85 backdrop-blur">
         <div className="mx-auto max-w-6xl px-6 h-16 flex items-center justify-between">
           <a href="/" className="flex items-center gap-3">
             <span className="disp track text-[11px] font-semibold uppercase">Eira Project</span>
           </a>
           <nav className="hidden md:flex items-center gap-9 text-[10px] track uppercase text-[var(--muted)]">
-            <a href="/katalog" className="text-[var(--ink)]">Katalog</a>
+            <a href="/" className="text-[var(--ink)]">Katalog</a>
             <a href="#" className="hover:text-[var(--ink)] transition">Custom</a>
-            <button className="hover:text-[var(--ink)] transition" onClick={() => setShowSizeChart(!showSizeChart)}>Size Guide</button>
+            <button type="button" className="hover:text-[var(--ink)] transition" onClick={() => setShowSizeChart(!showSizeChart)}>Size Guide</button>
             <a href="#" className="hover:text-[var(--ink)] transition">Tentang</a>
           </nav>
           <a href="#" className="rounded-full border border-[#2e2a34] px-5 py-2 text-[10px] track uppercase text-[var(--ink)] transition hover:border-[var(--gold)] hover:text-[var(--gold)]">Pre-Order</a>
@@ -56,13 +57,11 @@ export default function ProductDetailClient({ product }: { product: ProductDetai
       </header>
 
       <main className="mx-auto max-w-6xl px-6 pt-10 pb-20">
-        {/* Breadcrumb */}
         <p className="text-[10px] track uppercase text-[var(--muted)]">
-          <a href="/katalog" className="hover:text-[var(--ink)]">← Katalog</a> / Desain Terbaru / <span className="text-[var(--ink)]">{product.name}</span>
+          <a href="/" className="hover:text-[var(--ink)]">← Katalog</a> / Desain Terbaru / <span className="text-[var(--ink)]">{product.name}</span>
         </p>
 
         <div className="mt-8 grid grid-cols-1 lg:grid-cols-[1.05fr_1fr] gap-10 lg:gap-16">
-          {/* Gallery */}
           <div>
             <div className="stage overflow-hidden">
               <img src={activeImg} alt={product.name} className="w-full aspect-square object-cover" />
@@ -71,7 +70,7 @@ export default function ProductDetailClient({ product }: { product: ProductDetai
               {product.thumbs.map((t, i) => (
                 <img
                   key={i}
-                  className={`thumb aspect-square w-full object-cover ${activeImg === t.src ? "[data-active=true]" : ""}`}
+                  className={`thumb aspect-square w-full object-cover${activeImg === t.src ? " [data-active=true]" : ""}`}
                   data-active={activeImg === t.src ? "true" : "false"}
                   src={t.src}
                   alt={t.alt}
@@ -81,15 +80,14 @@ export default function ProductDetailClient({ product }: { product: ProductDetai
             </div>
           </div>
 
-          {/* Info */}
           <div className="lg:pt-2">
             <p className="flex items-center gap-2 text-[10px] track uppercase text-[var(--muted)]">
               <span className="h-1.5 w-1.5 rounded-full bg-[var(--gold)]"></span> Desain Terbaru · Limited
             </p>
 
             <h1 className="disp mt-5 text-4xl sm:text-5xl font-extrabold uppercase leading-[1.05]">
-              {product.name.split(" ").map((w, i) => (
-                <span key={i}>{w}{i < product.name.split(" ").length - 1 ? <br /> : ""}</span>
+              {product.name.split(" ").map((w, i, arr) => (
+                <span key={i}>{w}{i < arr.length - 1 ? <br /> : ""}</span>
               ))}
             </h1>
 
@@ -104,7 +102,8 @@ export default function ProductDetailClient({ product }: { product: ProductDetai
               {SIZES.map((s) => (
                 <button
                   key={s}
-                  className={`size-btn px-6 py-2.5 text-[11px] track uppercase ${activeSize === s ? "[data-active=true]" : ""}`}
+                  type="button"
+                  className={`size px-6 py-2.5 text-[11px] track uppercase${activeSize === s ? " [data-active=true]" : ""}`}
                   data-active={activeSize === s ? "true" : "false"}
                   onClick={() => setActiveSize(s)}
                 >
@@ -114,8 +113,8 @@ export default function ProductDetailClient({ product }: { product: ProductDetai
             </div>
 
             <div className="mt-7 flex flex-col sm:flex-row gap-3">
-              <a href="#" className="flex-1 rounded-full bg-[var(--ink)] px-8 py-3.5 text-center text-[10px] track uppercase text-[#0a0a0a] transition hover:bg-[var(--gold)]">Order via WhatsApp →</a>
-              <button className="rounded-full border border-[#2e2a34] px-8 py-3.5 text-center text-[10px] track uppercase text-[var(--ink)] transition hover:border-[var(--gold)] hover:text-[var(--gold)]" onClick={() => setShowSizeChart(!showSizeChart)}>Size Chart</button>
+              <a href={waLink} target="_blank" rel="noopener" className="flex-1 rounded-full bg-[var(--ink)] px-8 py-3.5 text-center text-[10px] track uppercase text-[#0a0a0a] transition hover:bg-[var(--gold)]">Order via WhatsApp →</a>
+              <button type="button" className="rounded-full border border-[#2e2a34] px-8 py-3.5 text-center text-[10px] track uppercase text-[var(--ink)] transition hover:border-[var(--gold)] hover:text-[var(--gold)]" onClick={() => setShowSizeChart(!showSizeChart)}>Size Chart</button>
             </div>
 
             <div className="mt-9 grid grid-cols-3 gap-6 border-t border-[#1e1b23] pt-6">
@@ -126,7 +125,6 @@ export default function ProductDetailClient({ product }: { product: ProductDetai
           </div>
         </div>
 
-        {/* Size Chart */}
         {showSizeChart && (
           <section className="mt-16">
             <h2 className="disp track-sm text-[12px] font-semibold uppercase">Size Chart</h2>
@@ -134,7 +132,6 @@ export default function ProductDetailClient({ product }: { product: ProductDetai
           </section>
         )}
 
-        {/* Prev / Next */}
         <nav className="mt-16 flex flex-col sm:flex-row sm:items-center justify-between gap-8 border-t border-[#1e1b23] pt-8">
           <a href={`/katalog/${product.prev.slug}`} className="group">
             <p className="text-[10px] track uppercase text-[var(--muted)]">← Sebelumnya</p>
@@ -147,7 +144,6 @@ export default function ProductDetailClient({ product }: { product: ProductDetai
         </nav>
       </main>
 
-      {/* FOOTER */}
       <footer className="border-t border-[#1a171e]">
         <div className="mx-auto max-w-6xl px-6 py-10 flex flex-col sm:flex-row items-center justify-between gap-4">
           <span className="disp track text-[10px] uppercase text-[var(--muted)]">Eira Project — Fantasy Jersey</span>
