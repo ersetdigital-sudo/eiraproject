@@ -133,7 +133,7 @@ export default function ProductDetailClient({ product }: { product: ProductDetai
 
         <main className="mx-auto max-w-6xl px-6 pt-10 pb-20">
           <p className="text-[10px] track uppercase text-[var(--muted)]">
-            <a href="/" className="hover:text-[var(--ink)]">← Katalog</a> / Desain Terbaru / <span className="text-[var(--ink)]">{product.name}</span>
+            <a href="/katalog" className="hover:text-[var(--ink)]">← Katalog</a> / Desain Terbaru / <span className="text-[var(--ink)]">{product.name}</span>
           </p>
 
           <div className="mt-8 grid grid-cols-1 lg:grid-cols-[1.05fr_1fr] gap-10 lg:gap-16">
