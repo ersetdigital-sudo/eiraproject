@@ -46,26 +46,13 @@ export default function ProductDetailClient({ product }: { product: ProductDetai
     <>
       {/* ===== MOBILE LAYOUT ===== */}
       <div className="lg:hidden min-h-[100dvh] bg-[var(--bg)]">
-        {/* Breadcrumb + Pill nav — single row */}
-        <div className="flex flex-wrap items-center justify-between gap-2 px-5 pt-14 pb-4">
-          <p className="text-[10px] track uppercase text-[var(--muted)]">
-            <a href="/katalog" className="hover:text-[var(--ink)] transition">← Katalog</a> / <span className="text-[var(--ink)]">{product.name}</span>
+        {/* Breadcrumb — plain text */}
+        <div className="px-5 pt-14 pb-4">
+          <p className="text-[10px] track uppercase">
+            <a href="/katalog" className="text-[var(--muted)] hover:text-[var(--ink)] transition">← Katalog</a>
+            <span className="text-[var(--muted)]"> / </span>
+            <span className="text-[var(--gold)]">{product.name}</span>
           </p>
-          <div className="flex items-center gap-0 rounded-full border border-[var(--line)] bg-[#121417]/90 backdrop-blur-md text-[10px] track uppercase overflow-hidden shrink-0">
-            {product.prev ? (
-              <a href={`/katalog/${product.prev.slug}`} className="px-3 py-2 text-[var(--muted)] hover:text-[var(--ink)] transition">← Prev</a>
-            ) : (
-              <span className="px-3 py-2 text-[var(--line)] cursor-default">← Prev</span>
-            )}
-            <span className="px-3 py-2 text-[var(--ink)] border-x border-[var(--line)]">
-              {String(product.index + 1).padStart(2, "0")} / {String(product.total).padStart(2, "0")}
-            </span>
-            {product.next ? (
-              <a href={`/katalog/${product.next.slug}`} className="px-3 py-2 text-[var(--muted)] hover:text-[var(--ink)] transition">Next →</a>
-            ) : (
-              <span className="px-3 py-2 text-[var(--line)] cursor-default">Next →</span>
-            )}
-          </div>
         </div>
 
         {/* Hero Image — rounded bottom, padded */}
@@ -159,6 +146,25 @@ export default function ProductDetailClient({ product }: { product: ProductDetai
             <div className="rounded-xl border border-[var(--line)] bg-[var(--panel)] p-3 text-center">
               <p className="text-[9px] track uppercase text-[var(--muted)]">Toleransi</p>
               <p className="mt-1 text-[11px] font-semibold text-[var(--ink)]">1–3 cm</p>
+            </div>
+          </div>
+
+          {/* Prev / Next nav pill */}
+          <div className="mt-5 flex items-center justify-center">
+            <div className="flex items-center gap-0 rounded-full border border-[var(--line)] bg-[#121417]/90 backdrop-blur-md text-[10px] track uppercase overflow-hidden">
+              {product.prev ? (
+                <a href={`/katalog/${product.prev.slug}`} className="px-3 py-2 text-[var(--muted)] hover:text-[var(--ink)] transition">← Prev</a>
+              ) : (
+                <span className="px-3 py-2 text-[var(--line)] cursor-default">← Prev</span>
+              )}
+              <span className="px-3 py-2 text-[var(--ink)] border-x border-[var(--line)]">
+                {String(product.index + 1).padStart(2, "0")} / {String(product.total).padStart(2, "0")}
+              </span>
+              {product.next ? (
+                <a href={`/katalog/${product.next.slug}`} className="px-3 py-2 text-[var(--muted)] hover:text-[var(--ink)] transition">Next →</a>
+              ) : (
+                <span className="px-3 py-2 text-[var(--line)] cursor-default">Next →</span>
+              )}
             </div>
           </div>
         </div>
