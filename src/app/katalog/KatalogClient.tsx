@@ -42,12 +42,20 @@ const PRODUCTS_RAW: Omit<Product, "order">[] = [
     img: "https://res.cloudinary.com/dqjh7utdb/image/upload/v1788600849/sd6rk3qic0nk8hctaget.png",
     status: "available",
   },
+  {
+    slug: "aurora-drift",
+    name: "Aurora Drift",
+    badge: "New",
+    series: "Football Series",
+    price: "Rp 195.000",
+    img: "https://res.cloudinary.com/dqjh7utdb/image/upload/v1788602273/d6ihxscobpmz6ibwzjin.png",
+    status: "available",
+  },
 ];
 
 const PRODUCTS = PRODUCTS_RAW.map((p, i) => ({ ...p, order: i }));
 
 const SOLD_OUT = [
-  { name: "Aurora Drift", price: "Rp 195.000", img: "/images/9ac8e2ce-b1f6-4853-b56b-cd1e90a70d2d.png" },
   { name: "Ember Tide", price: "Rp 195.000", img: "/images/db45a9f9-af41-4cad-9611-6d2be74937af.png" },
   { name: "Solar Rift", price: "Rp 195.000", img: "/images/75c59814-6786-48b7-a111-d846c580a0a2.png" },
   { name: "Violet Storm", price: "Rp 195.000", img: "/images/5a185889-bc31-46c1-9cb5-7d795094036b.png" },
