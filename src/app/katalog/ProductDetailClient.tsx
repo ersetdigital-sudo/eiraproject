@@ -44,7 +44,6 @@ export default function ProductDetailClient({ product }: { product: ProductDetai
     <>
       {/* ===== MOBILE LAYOUT ===== */}
       <div className="lg:hidden min-h-[100dvh] bg-[var(--bg)]">
-        <Navbar1 onSizeGuide={() => setShowSizeChart(true)} />
 
         {/* Hero Image — rounded bottom, padded */}
         <div className="relative mx-4 mt-2 overflow-hidden rounded-b-[32px]">
