@@ -163,8 +163,20 @@ export default function ProductDetailClient({ product }: { product: ProductDetai
               Order via WhatsApp
             </a>
           </div>
+          </div>
+
+          {/* Prev / Next nav — mobile */}
+          <nav className="mt-8 border-t border-[var(--line)] pt-6">
+            <a href={`/katalog/${product.prev.slug}`} className="group block mb-4">
+              <p className="text-[10px] track uppercase text-[var(--muted)]">← Sebelumnya</p>
+              <p className="disp mt-1.5 text-[15px] font-bold uppercase group-hover:text-[var(--gold)] transition">{product.prev.name}</p>
+            </a>
+            <a href={`/katalog/${product.next.slug}`} className="group block">
+              <p className="text-[10px] track uppercase text-[var(--muted)]">Selanjutnya →</p>
+              <p className="disp mt-1.5 text-[15px] font-bold uppercase group-hover:text-[var(--gold)] transition">{product.next.name}</p>
+            </a>
+          </nav>
         </div>
-      </div>
 
       {/* ===== DESKTOP LAYOUT ===== */}
       <div className="hidden lg:block">
@@ -254,9 +266,8 @@ export default function ProductDetailClient({ product }: { product: ProductDetai
         </main>
 
         <footer className="border-t border-[var(--line)]">
-          <div className="mx-auto max-w-6xl px-6 py-10 flex flex-col sm:flex-row items-center justify-between gap-4">
+          <div className="mx-auto max-w-6xl px-6 py-10 flex items-center justify-center">
             <span className="disp track text-[10px] uppercase text-[var(--muted)]">Eira Project — Fantasy Jersey</span>
-            <span className="text-[10px] track uppercase text-[var(--muted)]">Made to order · Milano Dryfit</span>
           </div>
         </footer>
       </div>
