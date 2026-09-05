@@ -22,3 +22,6 @@ npm-debug.log*
 /assets/
 /fonts/
 /images/
+
+.vercel
+.env*

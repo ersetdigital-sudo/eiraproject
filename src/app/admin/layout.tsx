@@ -1,9 +1,10 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { supabase } from "@/lib/supabase";
+import "@/app/admin/admin.css";
 
 const NAV = [
   {
@@ -24,13 +25,43 @@ const NAV = [
 
 export default function AdminLayout({ children }: { children: React.ReactNode }) {
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [authed, setAuthed] = useState<boolean | null>(null);
   const pathname = usePathname();
   const router = useRouter();
+  const isLoginPage = pathname === "/admin/login";
+
+  useEffect(() => {
+    if (isLoginPage) {
+      setAuthed(true);
+      return;
+    }
+    supabase.auth.getSession().then(({ data: { session } }) => {
+      if (!session) {
+        router.replace("/admin/login");
+      } else {
+        setAuthed(true);
+      }
+    });
+  }, [isLoginPage, router]);
 
   async function handleLogout() {
     await supabase.auth.signOut();
     router.push("/admin/login");
     router.refresh();
+  }
+
+  // Login page — no sidebar, no chrome
+  if (isLoginPage) {
+    return <>{children}</>;
+  }
+
+  // Loading state while checking auth
+  if (!authed) {
+    return (
+      <div className="min-h-screen bg-[#090A0C] flex items-center justify-center">
+        <div className="w-6 h-6 border-2 border-[var(--gold)] border-t-transparent rounded-full animate-spin" />
+      </div>
+    );
   }
 
   return (

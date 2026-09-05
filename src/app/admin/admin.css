@@ -1,0 +1,19 @@
+/* ===== Admin Dashboard Theme ===== */
+
+/* Hide colored aura & grain from root layout */
+html body > .aura,
+html body > .grain { display: none !important; }
+html body { background: #090A0C !important; color: #F2F0EB !important; }
+
+:root {
+  --bg: #090A0C;
+  --panel: #121417;
+  --panel-2: #121417;
+  --line: #282A2F;
+  --ink: #F2F0EB;
+  --muted: #92939A;
+  --gold: #C8A96B;
+}
+
+.track { letter-spacing: .22em; }
+.track-sm { letter-spacing: .16em; }
