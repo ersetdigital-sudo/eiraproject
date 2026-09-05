@@ -1,9 +1,9 @@
 /* ===== KATALOG Theme — Achromatic ===== */
 
-/* Hide colored aura & grain from root layout */
-body > .aura,
-body > .grain { display: none !important; }
-body { background: #090A0C !important; }
+/* Hide colored aura & grain from root layout — must beat @layer base */
+html body > .aura,
+html body > .grain { display: none !important; }
+html body { background: #090A0C !important; color: #F2F0EB !important; }
 
 :root{
   --bg:#090A0C;--panel:#121417;--panel-2:#121417;
@@ -22,10 +22,12 @@ body { background: #090A0C !important; }
 .sold:hover img{filter:grayscale(.3) brightness(.85)}
 
 /* Product detail */
-.stage{background:#121417;border:1px solid var(--line);border-radius:20px}
-.thumb{border:1px solid var(--line);border-radius:12px;background:#090A0C;overflow:hidden;cursor:pointer;transition:border-color .3s,opacity .3s;opacity:.65}
+.stage{background:#121417;border:1px solid var(--line);border-radius:20px;padding:12px}
+.stage img{border-radius:12px}
+.thumb{border:1px solid var(--line);border-radius:12px;background:#090A0C;overflow:hidden;cursor:pointer;transition:border-color .3s,opacity .3s;opacity:.65;padding:6px}
 .thumb:hover{opacity:1}
 .thumb[data-active="true"]{border-color:#555;opacity:1}
+.thumb img{border-radius:8px}
 .size,.size-btn{border:1px solid #282A2F;border-radius:8px;background:transparent;color:var(--ink);transition:border-color .25s,background .25s,color .25s;cursor:pointer}
 .size:hover,.size-btn:hover{border-color:#555}
 .size[data-active="true"],.size-btn[data-active="true"]{background:var(--ink);border-color:var(--ink);color:#090A0C}

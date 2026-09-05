@@ -60,13 +60,17 @@ export default function ProductDetailClient({ product }: { product: ProductDetai
         <div className="px-4 -mt-8 relative z-10">
           <div className="flex gap-2 overflow-x-auto pb-2 scrollbar-hide">
             {product.thumbs.map((t, i) => (
-              <img
+              <div
                 key={i}
-                className={`shrink-0 w-[72px] h-[72px] object-cover rounded-lg border transition${activeImg === t.src ? " border-[var(--gold)] opacity-100" : " border-[var(--line)] opacity-60"}`}
-                src={t.src}
-                alt={t.alt}
+                className={`shrink-0 w-[72px] h-[72px] rounded-lg border p-[5px] transition${activeImg === t.src ? " border-[var(--gold)] opacity-100" : " border-[var(--line)] opacity-60"}`}
                 onClick={() => setActiveImg(t.src)}
-              />
+              >
+                <img
+                  className="w-full h-full object-cover rounded-[5px]"
+                  src={t.src}
+                  alt={t.alt}
+                />
+              </div>
             ))}
           </div>
         </div>
