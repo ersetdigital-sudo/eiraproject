@@ -14,55 +14,6 @@ interface Product {
   order: number;
 }
 
-const PRODUCTS_RAW: Omit<Product, "order">[] = [
-  {
-    slug: "velocity-blaze",
-    name: "Velocity Blaze",
-    badge: "New",
-    series: "Racing Series",
-    price: "Rp 195.000",
-    img: "https://res.cloudinary.com/dqjh7utdb/image/upload/v1788601179/pnwq7iwvjsb5fklfkiwi.png",
-    status: "available",
-  },
-  {
-    slug: "nebula-flux",
-    name: "Nebula Flux",
-    badge: "New",
-    series: "Football Series",
-    price: "Rp 195.000",
-    img: "https://res.cloudinary.com/dqjh7utdb/image/upload/v1788601363/rvyvtleqkforocilbh2b.png",
-    status: "available",
-  },
-  {
-    slug: "golden-shards",
-    name: "Golden Shards",
-    badge: "New",
-    series: "Community Series",
-    price: "Rp 195.000",
-    img: "https://res.cloudinary.com/dqjh7utdb/image/upload/v1788600849/sd6rk3qic0nk8hctaget.png",
-    status: "available",
-  },
-  {
-    slug: "aurora-drift",
-    name: "Aurora Drift",
-    badge: "New",
-    series: "Football Series",
-    price: "Rp 195.000",
-    img: "https://res.cloudinary.com/dqjh7utdb/image/upload/v1788602273/d6ihxscobpmz6ibwzjin.png",
-    status: "available",
-  },
-];
-
-const PRODUCTS = PRODUCTS_RAW.map((p, i) => ({ ...p, order: i }));
-
-const SOLD_OUT = [
-  { name: "Ember Tide", price: "Rp 195.000", img: "/images/db45a9f9-af41-4cad-9611-6d2be74937af.png" },
-  { name: "Solar Rift", price: "Rp 195.000", img: "/images/75c59814-6786-48b7-a111-d846c580a0a2.png" },
-  { name: "Violet Storm", price: "Rp 195.000", img: "/images/5a185889-bc31-46c1-9cb5-7d795094036b.png" },
-  { name: "Midnight Prism", price: "Rp 195.000", img: "/images/9ac8e2ce-b1f6-4853-b56b-cd1e90a70d2d.png" },
-  { name: "Frost Sigil", price: "Rp 195.000", img: "/images/db45a9f9-af41-4cad-9611-6d2be74937af.png" },
-];
-
 const SORT_OPTIONS = [
   { value: "newest", label: "Terbaru" },
   { value: "oldest", label: "Terlama" },
@@ -95,7 +46,13 @@ function sortProducts(products: Product[], sort: SortValue): Product[] {
   }
 }
 
-export default function KatalogClient() {
+export default function KatalogClient({
+  available: initialAvailable,
+  soldOut: initialSoldOut,
+}: {
+  available: Product[];
+  soldOut: Product[];
+}) {
   const [search, setSearch] = useState("");
   const [sort, setSort] = useState<SortValue>("newest");
   const [sortOpen, setSortOpen] = useState(false);
@@ -103,7 +60,7 @@ export default function KatalogClient() {
   const sortRef = useRef<HTMLDivElement>(null);
   const gridRef = useRef<HTMLDivElement>(null);
 
-  const sorted = useMemo(() => sortProducts(PRODUCTS, sort), [sort]);
+  const sorted = useMemo(() => sortProducts(initialAvailable, sort), [initialAvailable, sort]);
 
   const activeLabel = SORT_OPTIONS.find((o) => o.value === sort)?.label ?? "Terbaru";
 
@@ -146,7 +103,7 @@ export default function KatalogClient() {
       {/* HERO */}
       <section>
         <div className="mx-auto max-w-6xl px-6 pt-16 pb-10">
-          <p className="track text-[10px] uppercase text-[var(--muted)]">Koleksi Jersey Fantasy · 24 Desain</p>
+          <p className="track text-[10px] uppercase text-[var(--muted)]">Koleksi Jersey Fantasy · {sorted.length + initialSoldOut.length} Desain</p>
           <h1 className="disp mt-4 text-4xl sm:text-5xl font-extrabold uppercase tracking-tight text-[var(--ink)]">Katalog</h1>
           <p className="mt-4 max-w-md text-[13px] leading-relaxed text-[var(--muted)]">
             Lihat semua desain jersey fantasy Eira Project.<br />
@@ -256,39 +213,38 @@ export default function KatalogClient() {
           ))}
         </div>
 
-        <div className="mt-20 h-px w-full bg-[var(--line)]"></div>
+        {initialSoldOut.length > 0 && (
+          <>
+            <div className="mt-20 h-px w-full bg-[var(--line)]"></div>
 
-        {/* KOLEKSI SEBELUMNYA */}
-        <div className="mt-12 flex items-end justify-between">
-          <div>
-            <h2 className="disp track-sm text-[13px] font-semibold uppercase text-[var(--muted)]">Koleksi Sebelumnya</h2>
-            <p className="mt-2 text-[10px] track uppercase text-[var(--muted)]">Sudah Habis · {SOLD_OUT.length} Desain</p>
-          </div>
-        </div>
-
-        <div className={`mt-6 grid gap-6 sm:gap-8 sm:grid-cols-2 lg:grid-cols-3 ${gridCols === 2 ? "grid-cols-2" : "grid-cols-1"}`}>
-          {SOLD_OUT.map((p, i) => (
-            <article
-              key={p.name}
-              className="card sold group overflow-hidden opacity-80"
-              style={{ transitionDelay: `${i * 60}ms` }}
-            >
-              <div className="relative overflow-hidden rounded-t-[17px] bg-[var(--bg)]">
-                <img src={p.img} alt={p.name} className="w-full aspect-[4/5] object-cover" />
-                <span className="absolute left-5 top-5 rounded-full border border-[var(--line)] bg-black/60 px-3 py-1 text-[9px] track uppercase text-[var(--muted)]">Sold Out</span>
+            {/* KOLEKSI SEBELUMNYA */}
+            <div className="mt-12 flex items-end justify-between">
+              <div>
+                <h2 className="disp track-sm text-[13px] font-semibold uppercase text-[var(--muted)]">Koleksi Sebelumnya</h2>
+                <p className="mt-2 text-[10px] track uppercase text-[var(--muted)]">Sudah Habis · {initialSoldOut.length} Desain</p>
               </div>
-              <div className="px-6 pb-6 pt-5">
-                <h3 className="disp track-sm text-[12px] font-semibold uppercase text-[var(--muted)]">{p.name}</h3>
-                <p className="mt-3 text-[13px] text-[var(--muted)] line-through">{p.price}</p>
-              </div>
-            </article>
-          ))}
-        </div>
+            </div>
 
-        <div className="mt-14 flex flex-col items-center gap-4">
-          <a href="#" className="rounded-full border border-[var(--line)] px-8 py-3 text-[10px] track uppercase text-[var(--ink)] transition hover:border-[var(--gold)] hover:text-[var(--gold)]">Muat 9 Desain Lagi</a>
-          <p className="text-[10px] track uppercase text-[var(--muted)]">Menampilkan 9 dari 24 desain</p>
-        </div>
+            <div className={`mt-6 grid gap-6 sm:gap-8 sm:grid-cols-2 lg:grid-cols-3 ${gridCols === 2 ? "grid-cols-2" : "grid-cols-1"}`}>
+              {initialSoldOut.map((p, i) => (
+                <article
+                  key={p.slug}
+                  className="card sold group overflow-hidden opacity-80"
+                  style={{ transitionDelay: `${i * 60}ms` }}
+                >
+                  <div className="relative overflow-hidden rounded-t-[17px] bg-[var(--bg)]">
+                    <img src={p.img} alt={p.name} className="w-full aspect-[4/5] object-cover" />
+                    <span className="absolute left-5 top-5 rounded-full border border-[var(--line)] bg-black/60 px-3 py-1 text-[9px] track uppercase text-[var(--muted)]">Sold Out</span>
+                  </div>
+                  <div className="px-6 pb-6 pt-5">
+                    <h3 className="disp track-sm text-[12px] font-semibold uppercase text-[var(--muted)]">{p.name}</h3>
+                    <p className="mt-3 text-[13px] text-[var(--muted)] line-through">{p.price}</p>
+                  </div>
+                </article>
+              ))}
+            </div>
+          </>
+        )}
       </main>
 
       {/* FOOTER */}

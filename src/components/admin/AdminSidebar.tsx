@@ -56,7 +56,8 @@ export function AdminSidebar({ email }: { email?: string | null }) {
             <Link
               key={item.href}
               href={item.href}
-              className={`flex items-center gap-3 px-3 py-2.5 rounded-lg text-[12px] transition-colors ${
+              data-active={active ? "true" : "false"}
+              className={`admin-nav-link flex items-center gap-3 px-3 py-2.5 rounded-lg text-[12px] ${
                 active
                   ? "bg-white/5 text-[var(--gold)]"
                   : "text-[var(--muted)] hover:text-[var(--ink)] hover:bg-white/5"
