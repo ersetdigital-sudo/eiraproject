@@ -27,29 +27,29 @@ export default function Navbar1({ onSizeGuide }: Navbar1Props) {
   }, []);
 
   return (
-    <header className="relative flex justify-center px-4 py-4">
+    <header className="sticky top-0 z-30 flex justify-center px-4 pt-4 pb-0">
       <motion.nav
         initial={{ y: -24, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
         className={[
-          "w-full max-w-5xl rounded-2xl border px-6 flex items-center h-[62px] gap-0 transition-all duration-300",
+          "w-full max-w-5xl rounded-2xl border px-6 flex items-center h-[62px] transition-all duration-300",
           "bg-[#121417] border-white/10 shadow-[0_8px_32px_rgba(0,0,0,0.45)]",
           scrolled ? "shadow-2xl" : "",
         ].join(" ")}
       >
         {/* Logo */}
-        <Link href="/" className="flex items-center gap-2.5 mr-8 shrink-0">
+        <Link href="/" className="flex items-center mr-8 shrink-0">
           <span
-            className="font-bold text-[20px] tracking-tight text-white"
+            className="font-bold text-[20px] tracking-tight text-white uppercase"
             style={{ fontFamily: "'Syne', sans-serif" }}
           >
-            Eira<span className="text-[#C8A96B]">\</span>Project
+            Eira Project
           </span>
         </Link>
 
-        {/* Desktop Links */}
-        <div className="hidden md:flex items-center flex-1">
+        {/* Desktop Links — centered */}
+        <div className="hidden md:flex items-center justify-center flex-1">
           {NAV_LINKS.map((link, i) => (
             <motion.a
               key={link.label}
@@ -89,7 +89,6 @@ export default function Navbar1({ onSizeGuide }: Navbar1Props) {
 
         {/* Actions */}
         <div className="hidden md:flex items-center gap-2 shrink-0">
-          {/* Pre-Order CTA */}
           <motion.div
             initial={{ opacity: 0, x: 8 }}
             animate={{ opacity: 1, x: 0 }}

@@ -45,7 +45,7 @@ export default function ProductDetailClient({ product }: { product: ProductDetai
       {/* ===== MOBILE LAYOUT ===== */}
       <div className="lg:hidden min-h-[100dvh] bg-[var(--bg)]">
         <Navbar1 onSizeGuide={() => setShowSizeChart(true)} />
-        {/* Hero Image */}
+        {/* Hero Image — no extra pt needed, navbar is sticky but in-flow */}
         <div className="relative w-full aspect-[4/5] bg-[var(--bg)]">
           <img src={activeImg} alt={product.name} className="w-full h-full object-cover" />
           {/* Back button */}
