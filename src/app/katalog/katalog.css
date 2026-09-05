@@ -25,4 +25,7 @@
 .size:hover,.size-btn:hover{border-color:#6a6272}
 .size[data-active="true"],.size-btn[data-active="true"]{background:var(--ink);border-color:var(--ink);color:#0a0a0a}
 
+.scrollbar-hide{-ms-overflow-style:none;scrollbar-width:none}
+.scrollbar-hide::-webkit-scrollbar{display:none}
+
 ::selection{background:var(--gold);color:#0a0a0a}

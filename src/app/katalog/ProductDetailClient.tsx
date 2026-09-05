@@ -42,49 +42,60 @@ export default function ProductDetailClient({ product }: { product: ProductDetai
   return (
     <>
       {/* ===== MOBILE LAYOUT ===== */}
-      <div className="lg:hidden">
+      <div className="lg:hidden min-h-[100dvh] bg-[var(--bg)]">
         {/* Hero Image */}
-        <div className="relative h-[288px] w-full bg-[#0d0b10]">
+        <div className="relative w-full aspect-[4/5] bg-[#0d0b10]">
           <img src={activeImg} alt={product.name} className="w-full h-full object-cover" />
           {/* Back button */}
           <a href="/" className="absolute top-12 left-4 w-10 h-10 flex items-center justify-center rounded-full bg-white/80 backdrop-blur-sm shadow-sm">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0a0a0a" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><path d="M15 6l-6 6 6 6"></path></svg>
           </a>
           {/* Gradient overlay */}
-          <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-[var(--bg)] to-transparent"></div>
+          <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-[var(--bg)] to-transparent"></div>
+        </div>
+
+        {/* Thumbnails */}
+        <div className="px-4 -mt-8 relative z-10">
+          <div className="flex gap-2 overflow-x-auto pb-2 scrollbar-hide">
+            {product.thumbs.map((t, i) => (
+              <img
+                key={i}
+                className={`shrink-0 w-[72px] h-[72px] object-cover rounded-lg border transition${activeImg === t.src ? " border-[var(--gold)] opacity-100" : " border-[#2e2a34] opacity-60"}`}
+                src={t.src}
+                alt={t.alt}
+                onClick={() => setActiveImg(t.src)}
+              />
+            ))}
+          </div>
         </div>
 
         {/* Content Card */}
-        <div className="relative -mt-6 z-10 bg-[var(--bg)] rounded-t-[24px] px-6 pt-6 pb-32">
+        <div className="px-5 pt-5 pb-36">
           <p className="flex items-center gap-2 text-[10px] track uppercase text-[var(--muted)]">
             <span className="h-1.5 w-1.5 rounded-full bg-[var(--gold)]"></span> Desain Terbaru · Limited
           </p>
 
-          <h1 className="disp mt-4 text-[32px] font-extrabold uppercase leading-[1.05]">
-            {product.name.split(" ").map((w, i, arr) => (
-              <span key={i}>{w}{i < arr.length - 1 ? <br /> : ""}</span>
-            ))}
+          <h1 className="disp mt-3 text-[28px] font-extrabold uppercase leading-[1.05]">
+            {product.name}
           </h1>
 
-          <p className="disp mt-4 text-[22px] font-bold">{product.price}</p>
+          <p className="disp mt-3 text-[20px] font-bold">{product.price}</p>
 
-          <p className="mt-4 text-[13px] leading-relaxed text-[var(--muted)]">
+          <p className="mt-3 text-[13px] leading-relaxed text-[var(--muted)]">
             {product.description}
           </p>
 
-          {/* Size Guide Link */}
-          <div className="mt-6 flex items-center justify-between gap-4">
+          {/* Size Section */}
+          <div className="mt-6 flex items-center justify-between">
             <p className="text-[10px] track uppercase text-[var(--muted)]">Pilih Ukuran</p>
-            <button type="button" className="text-[11px] track uppercase text-[var(--gold)] hover:opacity-75 transition" onClick={() => setShowSizeChart(true)}>Size Guide <span>›</span></button>
+            <button type="button" className="text-[11px] track uppercase text-[var(--gold)]" onClick={() => setShowSizeChart(true)}>Size Guide ›</button>
           </div>
-
-          {/* Size Buttons */}
-          <div className="mt-3 flex flex-wrap gap-2">
+          <div className="mt-3 flex gap-2">
             {SIZES.map((s) => (
               <button
                 key={s}
                 type="button"
-                className={`size px-6 py-2.5 text-[11px] track uppercase${activeSize === s ? " [data-active=true]" : ""}`}
+                className={`size flex-1 py-2.5 text-[11px] track uppercase text-center${activeSize === s ? " [data-active=true]" : ""}`}
                 data-active={activeSize === s ? "true" : "false"}
                 onClick={() => setActiveSize(s)}
               >
@@ -93,21 +104,17 @@ export default function ProductDetailClient({ product }: { product: ProductDetai
             ))}
           </div>
 
-          <p className="mt-3 text-[12px] text-[#6f6b74] leading-relaxed">
-            Toleransi ukuran bisa berbeda 1–3 cm karena proses produksi.
-          </p>
-
           {/* Specs */}
-          <div className="mt-6 grid grid-cols-3 gap-4 border-t border-[#1e1b23] pt-5">
-            <div><p className="text-[9px] track uppercase text-[var(--muted)]">Bahan</p><p className="mt-1.5 text-[12px]">Milano Dryfit</p></div>
-            <div><p className="text-[9px] track uppercase text-[var(--muted)]">Produksi</p><p className="mt-1.5 text-[12px]">5–7 hari</p></div>
-            <div><p className="text-[9px] track uppercase text-[var(--muted)]">Toleransi</p><p className="mt-1.5 text-[12px]">1–3 cm</p></div>
+          <div className="mt-6 grid grid-cols-3 gap-3 border-t border-[#1e1b23] pt-4">
+            <div><p className="text-[9px] track uppercase text-[var(--muted)]">Bahan</p><p className="mt-1 text-[12px]">Milano Dryfit</p></div>
+            <div><p className="text-[9px] track uppercase text-[var(--muted)]">Produksi</p><p className="mt-1 text-[12px]">5–7 hari</p></div>
+            <div><p className="text-[9px] track uppercase text-[var(--muted)]">Toleransi</p><p className="mt-1 text-[12px]">1–3 cm</p></div>
           </div>
         </div>
 
         {/* Sticky Footer */}
-        <div className="fixed bottom-0 inset-x-0 z-50 border-t border-[#1e1b23] bg-[var(--bg)] px-6 py-4 pb-8">
-          <a href={waLink} target="_blank" rel="noopener" className="flex items-center justify-between w-full rounded-2xl bg-[var(--ink)] px-6 py-4 text-[#0a0a0a] shadow-lg">
+        <div className="fixed bottom-0 inset-x-0 z-50 border-t border-[#1e1b23] bg-[var(--bg)] px-5 py-3 pb-6">
+          <a href={waLink} target="_blank" rel="noopener" className="flex items-center justify-between w-full rounded-2xl bg-[var(--ink)] px-5 py-3.5 text-[#0a0a0a]">
             <span className="text-[11px] track uppercase font-semibold">Order via WhatsApp</span>
             <span className="text-[13px] font-bold">{product.price}</span>
           </a>
