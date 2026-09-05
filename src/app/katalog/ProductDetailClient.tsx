@@ -92,24 +92,6 @@ export default function ProductDetailClient({ product }: { product: ProductDetai
             <span className="shrink-0 rounded-full bg-[var(--gold)] px-3 py-1 text-[11px] font-bold text-[#090A0C]">NEW</span>
           </div>
 
-          {/* Meta badges */}
-          <div className="mt-4 flex items-center gap-3 rounded-2xl border border-[var(--line)] bg-[var(--panel)] px-3 py-2.5">
-            <span className="flex items-center gap-1.5 text-[11px] text-[var(--muted)]">
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
-              5–7 hari
-            </span>
-            <span className="w-px h-3 bg-[var(--line)]"></span>
-            <span className="flex items-center gap-1.5 text-[11px] text-[var(--muted)]">
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M20.38 3.46L16 2 12 5.69 8 2l-4.38 1.46a2 2 0 00-1.34 1.87v14.34A2 2 0 004.62 21.54L8 20l4 3.69L16 20l4.38 1.54a2 2 0 002.34-1.87V5.33a2 2 0 00-1.34-1.87z"/></svg>
-              Milano Dryfit
-            </span>
-            <span className="w-px h-3 bg-[var(--line)]"></span>
-            <span className="flex items-center gap-1.5 text-[11px] text-[var(--muted)]">
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
-              Free Ongkir
-            </span>
-          </div>
-
           {/* Price + Size row */}
           <div className="mt-5 flex items-end justify-between border-b border-[var(--line)] pb-4">
             <div>
