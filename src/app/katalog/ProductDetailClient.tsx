@@ -70,7 +70,7 @@ export default function ProductDetailClient({ product }: { product: ProductDetai
         </div>
 
         {/* Content Card */}
-        <div className="px-5 pt-5 pb-36">
+        <div className="px-5 pt-5 pb-44">
           <p className="flex items-center gap-2 text-[10px] track uppercase text-[var(--muted)]">
             <span className="h-1.5 w-1.5 rounded-full bg-[var(--gold)]"></span> Desain Terbaru · Limited
           </p>
