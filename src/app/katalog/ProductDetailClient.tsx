@@ -46,13 +46,6 @@ export default function ProductDetailClient({ product }: { product: ProductDetai
     <>
       {/* ===== MOBILE LAYOUT ===== */}
       <div className="lg:hidden min-h-[100dvh] bg-[var(--bg)]">
-        {/* Breadcrumb */}
-        <div className="px-5 pt-14 pb-4">
-          <p className="text-[10px] track uppercase text-[var(--muted)]">
-            <a href="/katalog" className="hover:text-[var(--ink)] transition">← Katalog</a> / <span className="text-[var(--ink)]">{product.name}</span>
-          </p>
-        </div>
-
         {/* Compact prev/next pill — mobile, top-right */}
         <div className="fixed top-14 right-4 z-40">
           <div className="flex items-center gap-0 rounded-full border border-[var(--line)] bg-[#121417]/90 backdrop-blur-md text-[10px] track uppercase overflow-hidden">
@@ -70,6 +63,13 @@ export default function ProductDetailClient({ product }: { product: ProductDetai
               <span className="px-3 py-2 text-[var(--line)] cursor-default">Next →</span>
             )}
           </div>
+        </div>
+
+        {/* Breadcrumb */}
+        <div className="px-5 pt-[92px] pb-4">
+          <p className="text-[10px] track uppercase text-[var(--muted)]">
+            <a href="/katalog" className="hover:text-[var(--ink)] transition">← Katalog</a> / <span className="text-[var(--ink)]">{product.name}</span>
+          </p>
         </div>
 
         {/* Hero Image — rounded bottom, padded */}
