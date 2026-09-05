@@ -99,6 +99,7 @@ export default function KatalogClient() {
   const [search, setSearch] = useState("");
   const [sort, setSort] = useState<SortValue>("newest");
   const [sortOpen, setSortOpen] = useState(false);
+  const [gridCols, setGridCols] = useState<1 | 2>(1);
   const sortRef = useRef<HTMLDivElement>(null);
   const gridRef = useRef<HTMLDivElement>(null);
 
@@ -156,9 +157,29 @@ export default function KatalogClient() {
       </section>
 
       <main id="katalog" className="mx-auto max-w-6xl px-6 pb-24">
-        {/* Sort Dropdown */}
-        <div className="flex items-center justify-end -mt-2">
-          <div ref={sortRef} className="relative">
+        {/* Sort Dropdown + Grid Toggle */}
+        <div className="flex items-center justify-between -mt-2">
+          {/* Grid toggle — mobile only */}
+          <div className="flex items-center gap-1 lg:hidden">
+            <button
+              type="button"
+              onClick={() => setGridCols(1)}
+              className={`p-2 rounded-lg transition-colors cursor-pointer ${gridCols === 1 ? "text-[var(--gold)] bg-white/5" : "text-[var(--muted)] hover:text-[var(--ink)]"}`}
+              aria-label="Tampilan 1 kolom"
+            >
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><rect x="3" y="3" width="18" height="5" rx="1"/><rect x="3" y="10" width="18" height="5" rx="1"/><rect x="3" y="17" width="18" height="5" rx="1"/></svg>
+            </button>
+            <button
+              type="button"
+              onClick={() => setGridCols(2)}
+              className={`p-2 rounded-lg transition-colors cursor-pointer ${gridCols === 2 ? "text-[var(--gold)] bg-white/5" : "text-[var(--muted)] hover:text-[var(--ink)]"}`}
+              aria-label="Tampilan 2 kolom"
+            >
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><rect x="3" y="3" width="8" height="8" rx="1"/><rect x="13" y="3" width="8" height="8" rx="1"/><rect x="3" y="13" width="8" height="8" rx="1"/><rect x="13" y="13" width="8" height="8" rx="1"/></svg>
+            </button>
+          </div>
+
+          <div ref={sortRef} className="relative ml-auto">
             <button
               type="button"
               onClick={() => setSortOpen(!sortOpen)}
@@ -215,7 +236,7 @@ export default function KatalogClient() {
           <span className="text-[10px] track uppercase text-[var(--gold)]">Tersedia</span>
         </div>
 
-        <div ref={gridRef} className="mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+        <div ref={gridRef} className={`mt-6 grid gap-6 sm:gap-8 sm:grid-cols-2 lg:grid-cols-3 ${gridCols === 2 ? "grid-cols-2" : "grid-cols-1"}`}>
           {sorted.map((p, i) => (
             <article
               key={p.slug}
@@ -224,12 +245,12 @@ export default function KatalogClient() {
             >
               <div className="relative overflow-hidden rounded-t-[17px] bg-[var(--bg)]">
                 <img src={p.img} alt={p.name} className="w-full aspect-[4/5] object-cover" />
-                <span className="absolute left-5 top-5 rounded-full border border-[var(--line)] bg-black/50 px-3 py-1 text-[9px] track uppercase text-[var(--gold)]">{p.badge}</span>
+                <span className="absolute left-3 sm:left-5 top-3 sm:top-5 rounded-full border border-[var(--line)] bg-black/50 px-2 sm:px-3 py-1 text-[8px] sm:text-[9px] track uppercase text-[var(--gold)]">{p.badge}</span>
               </div>
-              <div className="px-6 pb-6 pt-5">
-                <h3 className="disp track-sm text-[12px] font-semibold uppercase">{p.name}</h3>
-                <p className="mt-3 text-[13px] text-[var(--ink)]">{p.price}</p>
-                <a href={`/katalog/${p.slug}`} className="cta-link mt-4 inline-flex items-center gap-2 text-[10px] track uppercase text-[var(--gold)]">Lihat Detail →</a>
+              <div className="px-4 sm:px-6 pb-4 sm:pb-6 pt-3 sm:pt-5">
+                <h3 className="disp track-sm text-[11px] sm:text-[12px] font-semibold uppercase">{p.name}</h3>
+                <p className="mt-2 sm:mt-3 text-[12px] sm:text-[13px] text-[var(--ink)]">{p.price}</p>
+                <a href={`/katalog/${p.slug}`} className="cta-link mt-3 sm:mt-4 inline-flex items-center gap-2 text-[9px] sm:text-[10px] track uppercase text-[var(--gold)]">Lihat Detail →</a>
               </div>
             </article>
           ))}
@@ -245,7 +266,7 @@ export default function KatalogClient() {
           </div>
         </div>
 
-        <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+        <div className={`mt-6 grid gap-6 sm:gap-8 sm:grid-cols-2 lg:grid-cols-3 ${gridCols === 2 ? "grid-cols-2" : "grid-cols-1"}`}>
           {SOLD_OUT.map((p, i) => (
             <article
               key={p.name}
