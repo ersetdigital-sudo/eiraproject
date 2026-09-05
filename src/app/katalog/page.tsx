@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import "./katalog.css";
 import KatalogClient from "./KatalogClient";
 
 export const metadata: Metadata = {
