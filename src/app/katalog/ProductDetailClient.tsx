@@ -49,7 +49,7 @@ export default function ProductDetailClient({ product }: { product: ProductDetai
           <nav className="hidden md:flex items-center gap-9 text-[10px] track uppercase text-[var(--muted)]">
             <a href="/" className="text-[var(--ink)]">Katalog</a>
             <a href="#" className="hover:text-[var(--ink)] transition">Custom</a>
-            <button type="button" className="hover:text-[var(--ink)] transition" onClick={() => setShowSizeChart(!showSizeChart)}>Size Guide</button>
+            <button type="button" className="hover:text-[var(--ink)] transition" onClick={() => setShowSizeChart(true)}>Size Guide</button>
             <a href="#" className="hover:text-[var(--ink)] transition">Tentang</a>
           </nav>
           <a href="#" className="rounded-full border border-[#2e2a34] px-5 py-2 text-[10px] track uppercase text-[var(--ink)] transition hover:border-[var(--gold)] hover:text-[var(--gold)]">Pre-Order</a>
@@ -97,7 +97,10 @@ export default function ProductDetailClient({ product }: { product: ProductDetai
 
             <p className="disp mt-7 text-3xl font-bold">{product.price}</p>
 
-            <p className="mt-8 text-[10px] track uppercase text-[var(--muted)]">Pilih Ukuran — Oversize Fit</p>
+            <div className="mt-8 flex items-center justify-between gap-4">
+              <p className="text-[10px] track uppercase text-[var(--muted)]">Pilih Ukuran</p>
+              <button type="button" className="text-[11px] track uppercase text-[var(--gold)] hover:opacity-75 transition" onClick={() => setShowSizeChart(true)}>Size Guide <span>›</span></button>
+            </div>
             <div className="mt-3 flex flex-wrap gap-2">
               {SIZES.map((s) => (
                 <button
@@ -112,9 +115,8 @@ export default function ProductDetailClient({ product }: { product: ProductDetai
               ))}
             </div>
 
-            <div className="mt-7 flex flex-col sm:flex-row gap-3">
-              <a href={waLink} target="_blank" rel="noopener" className="flex-1 rounded-full bg-[var(--ink)] px-8 py-3.5 text-center text-[10px] track uppercase text-[#0a0a0a] transition hover:bg-[var(--gold)]">Order via WhatsApp →</a>
-              <button type="button" className="rounded-full border border-[#2e2a34] px-8 py-3.5 text-center text-[10px] track uppercase text-[var(--ink)] transition hover:border-[var(--gold)] hover:text-[var(--gold)]" onClick={() => setShowSizeChart(!showSizeChart)}>Size Chart</button>
+            <div className="mt-7">
+              <a href={waLink} target="_blank" rel="noopener" className="block w-full rounded-full bg-[var(--ink)] px-8 py-3.5 text-center text-[10px] track uppercase text-[#0a0a0a] transition hover:bg-[var(--gold)]">Order via WhatsApp →</a>
             </div>
 
             <div className="mt-9 grid grid-cols-3 gap-6 border-t border-[#1e1b23] pt-6">
@@ -124,13 +126,6 @@ export default function ProductDetailClient({ product }: { product: ProductDetai
             </div>
           </div>
         </div>
-
-        {showSizeChart && (
-          <section className="mt-16">
-            <h2 className="disp track-sm text-[12px] font-semibold uppercase">Size Chart</h2>
-            <div className="stage mt-4 p-6"><img src="/images/893f43c0-c0d2-4f14-8103-6313203f5042.jpg" alt="Size chart Eira Project" className="mx-auto w-full max-w-lg rounded-xl" /></div>
-          </section>
-        )}
 
         <nav className="mt-16 flex flex-col sm:flex-row sm:items-center justify-between gap-8 border-t border-[#1e1b23] pt-8">
           <a href={`/katalog/${product.prev.slug}`} className="group">
@@ -150,6 +145,24 @@ export default function ProductDetailClient({ product }: { product: ProductDetai
           <span className="text-[10px] track uppercase text-[#6f6b74]">Made to order · Milano Dryfit</span>
         </div>
       </footer>
+      {/* SIZE GUIDE MODAL */}
+      {showSizeChart && (
+        <div className="fixed inset-0 z-80 flex items-center justify-center p-4" onClick={() => setShowSizeChart(false)}>
+          <div className="absolute inset-0 bg-[#060708]/85 backdrop-blur-[6px]"></div>
+          <div className="relative w-full max-w-[560px] max-h-[88vh] overflow-y-auto bg-[#111214] border border-[#292B30] transform transition-transform" onClick={(e) => e.stopPropagation()}>
+            <div className="flex items-center justify-between gap-4 px-5 sm:px-6 h-14 border-b border-[#292B30]">
+              <p className="text-[11px] track uppercase text-[var(--ink)]">Size Guide</p>
+              <button type="button" className="text-[11px] track uppercase text-[var(--gold)] hover:opacity-75 transition" onClick={() => setShowSizeChart(false)}>Close ✕</button>
+            </div>
+            <div className="p-4 sm:p-6">
+              <img src="/images/893f43c0-c0d2-4f14-8103-6313203f5042.jpg" alt="Size chart Eira Project" className="w-full h-auto rounded-sm" />
+              <p className="mt-4 text-[12px] text-[#92939A] leading-relaxed">
+                Toleransi ukuran bisa berbeda 1–3 cm karena proses produksi dan saat pencucian pertama.
+              </p>
+            </div>
+          </div>
+        </div>
+      )}
     </>
   );
 }
