@@ -44,18 +44,20 @@ export default function ProductDetailClient({ product }: { product: ProductDetai
     <>
       {/* ===== MOBILE LAYOUT ===== */}
       <div className="lg:hidden min-h-[100dvh] bg-[var(--bg)]">
+        {/* Breadcrumb */}
+        <div className="px-5 pt-14 pb-4">
+          <p className="text-[10px] track uppercase text-[var(--muted)]">
+            <a href="/katalog" className="hover:text-[var(--ink)] transition">← Katalog</a> / Desain Terbaru / <span className="text-[var(--ink)]">{product.name}</span>
+          </p>
+        </div>
 
         {/* Hero Image — rounded bottom, padded */}
-        <div className="relative mx-4 mt-2 overflow-hidden rounded-b-[32px]">
+        <div className="relative mx-4 overflow-hidden rounded-b-[32px]">
           <div className="relative aspect-[4/5] bg-[var(--panel)]">
             <img src={activeImg} alt={product.name} className="w-full h-full object-cover" />
           </div>
           {/* Gradient overlay */}
           <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-[var(--bg)] to-transparent"></div>
-          {/* Back button — floating over hero */}
-          <a href="/katalog" className="absolute top-12 left-4 w-10 h-10 flex items-center justify-center rounded-full bg-white/80 backdrop-blur-md shadow-md border border-white/40">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#090A0C" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><path d="M15 6l-6 6 6 6"></path></svg>
-          </a>
         </div>
 
         {/* Thumbnails */}
