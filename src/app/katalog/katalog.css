@@ -21,8 +21,8 @@
 .thumb{border:1px solid var(--line);border-radius:12px;background:#0d0b10;overflow:hidden;cursor:pointer;transition:border-color .3s,opacity .3s;opacity:.65}
 .thumb:hover{opacity:1}
 .thumb[data-active="true"]{border-color:#6a6272;opacity:1}
-.size-btn{border:1px solid #2e2a34;border-radius:8px;background:transparent;color:var(--ink);transition:border-color .25s,background .25s,color .25s;cursor:pointer}
-.size-btn:hover{border-color:#6a6272}
-.size-btn[data-active="true"]{background:var(--ink);border-color:var(--ink);color:#0a0a0a}
+.size,.size-btn{border:1px solid #2e2a34;border-radius:8px;background:transparent;color:var(--ink);transition:border-color .25s,background .25s,color .25s;cursor:pointer}
+.size:hover,.size-btn:hover{border-color:#6a6272}
+.size[data-active="true"],.size-btn[data-active="true"]{background:var(--ink);border-color:var(--ink);color:#0a0a0a}
 
 ::selection{background:var(--gold);color:#0a0a0a}
