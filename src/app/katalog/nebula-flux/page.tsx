@@ -11,10 +11,10 @@ const product = {
   name: "Nebula Flux",
   description: "Jersey fantasy dengan motif marmer bergelombang dan gradasi lembut. Dicetak full-print pada bahan Milano Dryfit, jahitan rapi, siap dipakai main atau harian.",
   price: "Rp 195.000",
-  mainImg: "https://res.cloudinary.com/dqjh7utdb/image/upload/v1788600229/yjv6ll3mgbsvmpxfcgix.png",
+  mainImg: "https://res.cloudinary.com/dqjh7utdb/image/upload/v1788601363/rvyvtleqkforocilbh2b.png",
   thumbs: [
-    { src: "https://res.cloudinary.com/dqjh7utdb/image/upload/v1788600229/yjv6ll3mgbsvmpxfcgix.png", alt: "Tampak depan" },
-    { src: "https://res.cloudinary.com/dqjh7utdb/image/upload/v1788600400/w9wqkdiv2q0kmpoqrnhc.png", alt: "Tampak samping" },
+    { src: "https://res.cloudinary.com/dqjh7utdb/image/upload/v1788601363/rvyvtleqkforocilbh2b.png", alt: "Tampak depan" },
+    { src: "https://res.cloudinary.com/dqjh7utdb/image/upload/v1788601362/itjqasz0x0dqeqqrc2jd.png", alt: "Tampak samping" },
   ],
   prev: { slug: "velocity-blaze", name: "Velocity Blaze" },
   next: { slug: "golden-shards", name: "Golden Shards" },
