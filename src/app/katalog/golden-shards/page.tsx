@@ -19,7 +19,9 @@ const product = {
     { src: "/images/db45a9f9-af41-4cad-9611-6d2be74937af.png", alt: "Tampak alternatif" },
   ],
   prev: { slug: "nebula-flux", name: "Nebula Flux" },
-  next: { slug: "velocity-blaze", name: "Velocity Blaze" },
+  next: null,
+  index: 2,
+  total: 3,
 };
 
 export default function GoldenShardsPage() {

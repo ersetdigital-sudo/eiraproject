@@ -20,6 +20,8 @@ const product = {
   ],
   prev: { slug: "velocity-blaze", name: "Velocity Blaze" },
   next: { slug: "golden-shards", name: "Golden Shards" },
+  index: 1,
+  total: 3,
 };
 
 export default function NebulaFluxPage() {

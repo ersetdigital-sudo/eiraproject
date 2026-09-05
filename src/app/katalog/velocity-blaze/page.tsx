@@ -18,8 +18,10 @@ const product = {
     { src: "/images/f5f526ba-1cb8-4c3b-b713-6fb2be8bcdaa.png", alt: "Detail bahan" },
     { src: "/images/6ccefc8e-e96c-4f98-9912-41410a64a9ea.png", alt: "Tampak depan alternatif" },
   ],
-  prev: { slug: "golden-shards", name: "Golden Shards" },
+  prev: null,
   next: { slug: "nebula-flux", name: "Nebula Flux" },
+  index: 0,
+  total: 3,
 };
 
 export default function VelocityBlazePage() {

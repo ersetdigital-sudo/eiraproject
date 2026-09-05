@@ -10,8 +10,10 @@ interface ProductDetail {
   price: string;
   mainImg: string;
   thumbs: { src: string; alt: string }[];
-  prev: { slug: string; name: string };
-  next: { slug: string; name: string };
+  prev: { slug: string; name: string } | null;
+  next: { slug: string; name: string } | null;
+  index: number;
+  total: number;
 }
 
 const SIZES = ["S", "M", "L", "XL", "2XL"];
@@ -49,6 +51,25 @@ export default function ProductDetailClient({ product }: { product: ProductDetai
           <p className="text-[10px] track uppercase text-[var(--muted)]">
             <a href="/katalog" className="hover:text-[var(--ink)] transition">← Katalog</a> / Desain Terbaru / <span className="text-[var(--ink)]">{product.name}</span>
           </p>
+        </div>
+
+        {/* Compact prev/next pill — mobile, top-right */}
+        <div className="fixed top-14 right-4 z-40">
+          <div className="flex items-center gap-0 rounded-full border border-[var(--line)] bg-[#121417]/90 backdrop-blur-md text-[10px] track uppercase overflow-hidden">
+            {product.prev ? (
+              <a href={`/katalog/${product.prev.slug}`} className="px-3 py-2 text-[var(--muted)] hover:text-[var(--ink)] transition">← Prev</a>
+            ) : (
+              <span className="px-3 py-2 text-[var(--line)] cursor-default">← Prev</span>
+            )}
+            <span className="px-3 py-2 text-[var(--ink)] border-x border-[var(--line)]">
+              {String(product.index + 1).padStart(2, "0")} / {String(product.total).padStart(2, "0")}
+            </span>
+            {product.next ? (
+              <a href={`/katalog/${product.next.slug}`} className="px-3 py-2 text-[var(--muted)] hover:text-[var(--ink)] transition">Next →</a>
+            ) : (
+              <span className="px-3 py-2 text-[var(--line)] cursor-default">Next →</span>
+            )}
+          </div>
         </div>
 
         {/* Hero Image — rounded bottom, padded */}
@@ -163,20 +184,8 @@ export default function ProductDetailClient({ product }: { product: ProductDetai
               Order via WhatsApp
             </a>
           </div>
-          </div>
-
-          {/* Prev / Next nav — mobile */}
-          <nav className="mt-8 border-t border-[var(--line)] pt-6">
-            <a href={`/katalog/${product.prev.slug}`} className="group block mb-4">
-              <p className="text-[10px] track uppercase text-[var(--muted)]">← Sebelumnya</p>
-              <p className="disp mt-1.5 text-[15px] font-bold uppercase group-hover:text-[var(--gold)] transition">{product.prev.name}</p>
-            </a>
-            <a href={`/katalog/${product.next.slug}`} className="group block">
-              <p className="text-[10px] track uppercase text-[var(--muted)]">Selanjutnya →</p>
-              <p className="disp mt-1.5 text-[15px] font-bold uppercase group-hover:text-[var(--gold)] transition">{product.next.name}</p>
-            </a>
-          </nav>
         </div>
+      </div>
 
       {/* ===== DESKTOP LAYOUT ===== */}
       <div className="hidden lg:block">
@@ -254,14 +263,18 @@ export default function ProductDetailClient({ product }: { product: ProductDetai
           </div>
 
           <nav className="mt-16 flex flex-col sm:flex-row sm:items-center justify-between gap-8 border-t border-[var(--line)] pt-8">
-            <a href={`/katalog/${product.prev.slug}`} className="group">
-              <p className="text-[10px] track uppercase text-[var(--muted)]">← Sebelumnya</p>
-              <p className="disp mt-2 text-lg font-bold uppercase group-hover:text-[var(--gold)] transition">{product.prev.name}</p>
-            </a>
-            <a href={`/katalog/${product.next.slug}`} className="group sm:text-right">
-              <p className="text-[10px] track uppercase text-[var(--muted)]">Selanjutnya →</p>
-              <p className="disp mt-2 text-lg font-bold uppercase group-hover:text-[var(--gold)] transition">{product.next.name}</p>
-            </a>
+            {product.prev ? (
+              <a href={`/katalog/${product.prev.slug}`} className="group">
+                <p className="text-[10px] track uppercase text-[var(--muted)]">← Sebelumnya</p>
+                <p className="disp mt-2 text-lg font-bold uppercase group-hover:text-[var(--gold)] transition">{product.prev.name}</p>
+              </a>
+            ) : <div />}
+            {product.next ? (
+              <a href={`/katalog/${product.next.slug}`} className="group sm:text-right">
+                <p className="text-[10px] track uppercase text-[var(--muted)]">Selanjutnya →</p>
+                <p className="disp mt-2 text-lg font-bold uppercase group-hover:text-[var(--gold)] transition">{product.next.name}</p>
+              </a>
+            ) : <div />}
           </nav>
         </main>
 
