@@ -10,7 +10,6 @@ type Navbar1Props = {
 
 const NAV_LINKS = [
   { label: "Katalog", href: "/katalog" },
-  { label: "Custom", href: "#" },
   { label: "Size Guide", href: "#size-guide" },
   { label: "Tentang", href: "#" },
 ];
