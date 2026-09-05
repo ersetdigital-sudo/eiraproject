@@ -96,7 +96,7 @@ export default function Navbar1({ onSizeGuide }: Navbar1Props) {
             whileTap={{ scale: 0.97 }}
           >
             <Link
-              href="#"
+              href="/katalog"
               className="h-[34px] px-4 rounded-[10px] text-[13px] font-semibold flex items-center gap-[6px] transition-opacity duration-200 whitespace-nowrap bg-[#C8A96B] text-[#090A0C] hover:opacity-90"
             >
               Pre-Order
@@ -162,7 +162,7 @@ export default function Navbar1({ onSizeGuide }: Navbar1Props) {
 
             <div className="flex flex-col gap-2 mt-1 px-0">
               <Link
-                href="#"
+                href="/katalog"
                 className="h-10 px-4 rounded-[10px] text-[13px] font-semibold flex items-center gap-2 justify-center bg-[#C8A96B] text-[#090A0C]"
               >
                 Pre-Order
