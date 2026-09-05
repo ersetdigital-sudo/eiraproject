@@ -49,7 +49,7 @@ export default function ProductDetailClient({ product }: { product: ProductDetai
         {/* Breadcrumb */}
         <div className="px-5 pt-14 pb-4">
           <p className="text-[10px] track uppercase text-[var(--muted)]">
-            <a href="/katalog" className="hover:text-[var(--ink)] transition">← Katalog</a> / Desain Terbaru / <span className="text-[var(--ink)]">{product.name}</span>
+            <a href="/katalog" className="hover:text-[var(--ink)] transition">← Katalog</a> / <span className="text-[var(--ink)]">{product.name}</span>
           </p>
         </div>
 
