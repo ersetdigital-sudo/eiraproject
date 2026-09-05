@@ -46,6 +46,90 @@ const PRODUCTS = [
       { v: "Back", src: "/images/83e3e297-f8d9-4aab-be27-eca330e264a3.png" },
     ],
   },
+  {
+    n: "04",
+    name: "Crimson Drift",
+    cat: "Drop 02 / 2026",
+    glow: "g1",
+    price: "Rp 195.000",
+    img: "/images/7dd1f74e-653b-407e-8aa3-f3823b11c91b.png",
+    desc: "A bold crimson-themed fantasy jersey with flowing aerodynamic lines and a fiery red-to-black gradient palette.",
+    views: [
+      { v: "Front", src: "/images/7dd1f74e-653b-407e-8aa3-f3823b11c91b.png" },
+      { v: "Side", src: "/images/c8f67d04-4a6f-4161-8b64-0a891f2ecf6c.png" },
+      { v: "Back", src: "/images/0e87a677-1f67-48df-9ea2-37fb53f122eb.png" },
+    ],
+  },
+  {
+    n: "05",
+    name: "Frost Pulse",
+    cat: "Drop 02 / 2026",
+    glow: "g2",
+    price: "Rp 195.000",
+    img: "/images/831017d0-f7a3-4c07-93d3-1256a5324375.png",
+    desc: "An icy blue fantasy design with crystalline patterns and a cool cyan-to-navy transition — sharp and futuristic.",
+    views: [
+      { v: "Front", src: "/images/831017d0-f7a3-4c07-93d3-1256a5324375.png" },
+      { v: "Side", src: "/images/ba839273-f6c3-48f5-8abf-890ea3af9bae.png" },
+      { v: "Back", src: "/images/673669a3-8bf2-43f6-ab38-db255d1bce96.png" },
+    ],
+  },
+  {
+    n: "06",
+    name: "Solar Ember",
+    cat: "Drop 02 / 2026",
+    glow: "g3",
+    price: "Rp 185.000",
+    img: "/images/e83ab667-0ed9-4255-89b9-a0ed228f2730.png",
+    desc: "A warm ember-inspired jersey with solar flare accents and a golden-to-charcoal gradient — radiant yet grounded.",
+    views: [
+      { v: "Front", src: "/images/e83ab667-0ed9-4255-89b9-a0ed228f2730.png" },
+      { v: "Side", src: "/images/bbe4ccbc-ba73-4f91-a234-52263fb7e935.png" },
+      { v: "Back", src: "/images/83e3e297-f8d9-4aab-be27-eca330e264a3.png" },
+    ],
+  },
+  {
+    n: "07",
+    name: "Void Runner",
+    cat: "Drop 02 / 2026",
+    glow: "g1",
+    price: "Rp 195.000",
+    img: "/images/7dd1f74e-653b-407e-8aa3-f3823b11c91b.png",
+    desc: "A dark-themed fantasy jersey with neon trace lines and a deep violet-to-black palette — stealth meets speed.",
+    views: [
+      { v: "Front", src: "/images/7dd1f74e-653b-407e-8aa3-f3823b11c91b.png" },
+      { v: "Side", src: "/images/c8f67d04-4a6f-4161-8b64-0a891f2ecf6c.png" },
+      { v: "Back", src: "/images/0e87a677-1f67-48df-9ea2-37fb53f122eb.png" },
+    ],
+  },
+  {
+    n: "08",
+    name: "Terra Vortex",
+    cat: "Drop 02 / 2026",
+    glow: "g3",
+    price: "Rp 185.000",
+    img: "/images/e83ab667-0ed9-4255-89b9-a0ed228f2730.png",
+    desc: "An earthy fantasy design with swirling vortex graphics and a brown-to-teal palette — nature meets chaos.",
+    views: [
+      { v: "Front", src: "/images/e83ab667-0ed9-4255-89b9-a0ed228f2730.png" },
+      { v: "Side", src: "/images/bbe4ccbc-ba73-4f91-a234-52263fb7e935.png" },
+      { v: "Back", src: "/images/83e3e297-f8d9-4aab-be27-eca330e264a3.png" },
+    ],
+  },
+  {
+    n: "09",
+    name: "Neon Surge",
+    cat: "Drop 02 / 2026",
+    glow: "g2",
+    price: "Rp 195.000",
+    img: "/images/831017d0-f7a3-4c07-93d3-1256a5324375.png",
+    desc: "A high-voltage neon fantasy jersey with electric circuit patterns and a glowing green-on-black aesthetic.",
+    views: [
+      { v: "Front", src: "/images/831017d0-f7a3-4c07-93d3-1256a5324375.png" },
+      { v: "Side", src: "/images/ba839273-f6c3-48f5-8abf-890ea3af9bae.png" },
+      { v: "Back", src: "/images/673669a3-8bf2-43f6-ab38-db255d1bce96.png" },
+    ],
+  },
 ];
 
 const SIZES = [
@@ -63,6 +147,8 @@ function waLink(p: (typeof PRODUCTS)[number], size: string | null) {
   return "https://wa.me/6282299849418?text=" + encodeURIComponent(t);
 }
 
+const ITEMS_PER_PAGE = 6;
+
 export default function KatalogClient() {
   const [cur, setCur] = useState(0);
   const [view, setView] = useState(0);
@@ -70,8 +156,13 @@ export default function KatalogClient() {
   const [detailOpen, setDetailOpen] = useState(false);
   const [guideOpen, setGuideOpen] = useState(false);
   const [imgShown, setImgShown] = useState(true);
+  const [page, setPage] = useState(1);
   const detailRef = useRef<HTMLDivElement>(null);
   const thumbsRef = useRef<HTMLDivElement>(null);
+  const gridRef = useRef<HTMLDivElement>(null);
+
+  const totalPages = Math.ceil(PRODUCTS.length / ITEMS_PER_PAGE);
+  const paginatedProducts = PRODUCTS.slice((page - 1) * ITEMS_PER_PAGE, page * ITEMS_PER_PAGE);
 
   const product = PRODUCTS[cur];
 
@@ -153,9 +244,11 @@ export default function KatalogClient() {
         }),
       { threshold: 0.12 }
     );
-    document.querySelectorAll(".fade").forEach((el) => io.observe(el));
-    return () => io.disconnect();
-  }, []);
+    const timer = setTimeout(() => {
+      document.querySelectorAll(".grid .fade:not(.in)").forEach((el) => io.observe(el));
+    }, 50);
+    return () => { clearTimeout(timer); io.disconnect(); };
+  }, [page]);
 
   // Image transition
   useEffect(() => {
@@ -198,24 +291,107 @@ export default function KatalogClient() {
 
       {/* GRID */}
       <main className="mx-auto max-w-[1400px] px-6 md:px-10 py-12 md:py-16">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-4 sm:gap-x-8 gap-y-10 md:gap-y-16" id="grid">
-          {PRODUCTS.map((p, i) => (
-            <article
-              key={i}
-              className="item fade group cursor-pointer"
-              data-i={i}
-              style={{ transitionDelay: `${i * 90}ms` }}
-              onClick={() => openDetail(i)}
-            >
-              <div className="shot aspect-[4/5] flex items-center justify-center">
-                <div className={`glow ${p.glow}`}></div>
-                <img src={p.img} alt={p.name} className="relative w-full h-full object-contain p-3 sm:p-5" />
-              </div>
-              <h3 className="display mt-4 md:mt-6 text-lg sm:text-2xl md:text-[28px]">{p.name}</h3>
-              <div className="mt-3 md:mt-5 underline"></div>
-              <button className="cta mt-3 md:mt-4 flex items-center gap-2 md:gap-3">View design <span>→</span></button>
-            </article>
-          ))}
+        <div ref={gridRef} className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-4 sm:gap-x-8 gap-y-10 md:gap-y-16" id="grid">
+          {paginatedProducts.map((p, i) => {
+            const globalIdx = (page - 1) * ITEMS_PER_PAGE + i;
+            return (
+              <article
+                key={globalIdx}
+                className="item fade group cursor-pointer"
+                data-i={globalIdx}
+                style={{ transitionDelay: `${i * 90}ms` }}
+                onClick={() => openDetail(globalIdx)}
+              >
+                <div className="shot aspect-[4/5] flex items-center justify-center">
+                  <div className={`glow ${p.glow}`}></div>
+                  <img src={p.img} alt={p.name} className="relative w-full h-full object-contain p-3 sm:p-5" />
+                </div>
+                <h3 className="display mt-4 md:mt-6 text-lg sm:text-2xl md:text-[28px]">{p.name}</h3>
+                <div className="mt-3 md:mt-5 underline"></div>
+                <button className="cta mt-3 md:mt-4 flex items-center gap-2 md:gap-3">View design <span>→</span></button>
+              </article>
+            );
+          })}
+        </div>
+
+        {/* PAGINATION */}
+        {totalPages > 1 && (
+          <nav className="pagination" aria-label="Catalog pagination">
+            {/* Desktop pagination */}
+            <div className="pagination-desktop">
+              <button
+                className="pagination-arrow"
+                disabled={page === 1}
+                onClick={() => { setPage(1); gridRef.current?.scrollIntoView({ behavior: "smooth", block: "start" }); }}
+                aria-label="First page"
+              >
+                «
+              </button>
+              <button
+                className="pagination-arrow"
+                disabled={page === 1}
+                onClick={() => { setPage(page - 1); gridRef.current?.scrollIntoView({ behavior: "smooth", block: "start" }); }}
+                aria-label="Previous page"
+              >
+                ‹
+              </button>
+
+              {Array.from({ length: totalPages }, (_, i) => i + 1).map((p) => (
+                <button
+                  key={p}
+                  className={`pagination-num ${p === page ? "active" : ""}`}
+                  onClick={() => { setPage(p); gridRef.current?.scrollIntoView({ behavior: "smooth", block: "start" }); }}
+                  aria-label={`Page ${p}`}
+                  aria-current={p === page ? "page" : undefined}
+                >
+                  {p}
+                </button>
+              ))}
+
+              <button
+                className="pagination-arrow"
+                disabled={page === totalPages}
+                onClick={() => { setPage(page + 1); gridRef.current?.scrollIntoView({ behavior: "smooth", block: "start" }); }}
+                aria-label="Next page"
+              >
+                ›
+              </button>
+              <button
+                className="pagination-arrow"
+                disabled={page === totalPages}
+                onClick={() => { setPage(totalPages); gridRef.current?.scrollIntoView({ behavior: "smooth", block: "start" }); }}
+                aria-label="Last page"
+              >
+                »
+              </button>
+            </div>
+
+            {/* Mobile pagination */}
+            <div className="pagination-mobile">
+              <button
+                className="pagination-arrow"
+                disabled={page === 1}
+                onClick={() => { setPage(page - 1); gridRef.current?.scrollIntoView({ behavior: "smooth", block: "start" }); }}
+                aria-label="Previous page"
+              >
+                ‹ Prev
+              </button>
+              <span className="pagination-indicator">{page} / {totalPages}</span>
+              <button
+                className="pagination-arrow"
+                disabled={page === totalPages}
+                onClick={() => { setPage(page + 1); gridRef.current?.scrollIntoView({ behavior: "smooth", block: "start" }); }}
+                aria-label="Next page"
+              >
+                Next ›
+              </button>
+            </div>
+          </nav>
+        )}
+
+        {/* Results count */}
+        <div className="pagination-info">
+          Showing {(page - 1) * ITEMS_PER_PAGE + 1}–{Math.min(page * ITEMS_PER_PAGE, PRODUCTS.length)} of {PRODUCTS.length} designs
         </div>
       </main>
 

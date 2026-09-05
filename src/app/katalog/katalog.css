@@ -64,3 +64,52 @@ body{background:var(--bg);color:var(--ink);font-family:"Archivo",system-ui,sans-
 
 .detail-grid{display:grid;grid-template-columns:1fr}
 @media(min-width:1024px){.detail-grid{grid-template-columns:55fr 45fr}}
+
+/* ── Pagination ─────────────────────────────────────── */
+.pagination{display:flex;flex-direction:column;align-items:center;gap:16px;margin-top:48px}
+.pagination-desktop{display:none;align-items:center;gap:6px}
+.pagination-mobile{display:flex;align-items:center;gap:20px}
+
+.pagination-arrow{
+  display:inline-flex;align-items:center;justify-content:center;
+  min-width:42px;height:42px;padding:0 12px;
+  border:1px solid var(--border);background:transparent;color:var(--ink2);
+  font-size:16px;font-weight:500;letter-spacing:.04em;
+  transition:all .25s cubic-bezier(.22,.61,.36,1);cursor:pointer;
+}
+.pagination-arrow:hover:not(:disabled){color:var(--ink);border-color:var(--gold)}
+.pagination-arrow:disabled{opacity:.25;cursor:not-allowed}
+
+.pagination-num{
+  display:inline-flex;align-items:center;justify-content:center;
+  min-width:42px;height:42px;
+  border:1px solid transparent;background:transparent;color:var(--ink2);
+  font-size:12px;letter-spacing:.12em;font-weight:600;
+  transition:all .25s cubic-bezier(.22,.61,.36,1);cursor:pointer;
+}
+.pagination-num:hover{color:var(--ink);border-color:var(--border)}
+.pagination-num.active{
+  color:var(--gold);border-color:var(--gold);
+  background:rgba(200,169,107,.08);
+}
+
+.pagination-indicator{
+  font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink2);
+  font-variant-numeric:tabular-nums;min-width:60px;text-align:center;
+}
+
+.pagination-info{
+  margin-top:20px;text-align:center;
+  font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink2);
+  opacity:.6;
+}
+
+@media(min-width:640px){
+  .pagination-desktop{display:flex}
+  .pagination-mobile{display:none}
+}
+
+@media(max-width:639px){
+  .pagination-arrow{min-width:38px;height:38px;font-size:14px}
+  .pagination-info{font-size:10px}
+}
