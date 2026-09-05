@@ -39,7 +39,7 @@ const PRODUCTS_RAW: Omit<Product, "order">[] = [
     badge: "New",
     series: "Community Series",
     price: "Rp 195.000",
-    img: "/images/75c59814-6786-48b7-a111-d846c580a0a2.png",
+    img: "https://res.cloudinary.com/dqjh7utdb/image/upload/v1788600849/sd6rk3qic0nk8hctaget.png",
     status: "available",
   },
 ];
