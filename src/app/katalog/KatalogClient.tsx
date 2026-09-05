@@ -245,7 +245,7 @@ export default function KatalogClient() {
       { threshold: 0.12 }
     );
     const timer = setTimeout(() => {
-      document.querySelectorAll(".grid .fade:not(.in)").forEach((el) => io.observe(el));
+      document.querySelectorAll(".fade:not(.in)").forEach((el) => io.observe(el));
     }, 50);
     return () => { clearTimeout(timer); io.disconnect(); };
   }, [page]);
