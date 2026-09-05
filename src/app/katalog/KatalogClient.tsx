@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
+import Navbar1 from "@/components/blocks/navbar1";
 
 const PRODUCTS = [
   {
@@ -65,27 +66,7 @@ export default function KatalogClient() {
   return (
     <>
       {/* HEADER */}
-      <header className="sticky top-0 z-30 border-b border-[#1b181f] bg-[#0a0a0a]/85 backdrop-blur">
-        <div className="mx-auto max-w-6xl px-6 h-16 flex items-center justify-between">
-          <a href="/" className="flex items-center gap-3">
-            <span className="disp track text-[11px] font-semibold uppercase">Eira Project</span>
-          </a>
-          <nav className="hidden md:flex items-center gap-9 text-[10px] track uppercase text-[var(--muted)]">
-            <a href="/katalog" className="text-[var(--ink)]">Katalog</a>
-            <a href="#" className="hover:text-[var(--ink)] transition">Size Guide</a>
-            <a href="#" className="hover:text-[var(--ink)] transition">Tentang</a>
-          </nav>
-          <label className="flex items-center gap-2 rounded-full border border-[#232027] bg-[#121016] px-4 py-2">
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#8b8790" strokeWidth="2"><circle cx="11" cy="11" r="7"></circle><path d="m20 20-3.2-3.2"></path></svg>
-            <input
-              placeholder="Cari desain..."
-              value={search}
-              onChange={(e) => setSearch(e.target.value)}
-              className="w-24 sm:w-40 bg-transparent text-[11px] text-[var(--ink)] placeholder-[#6f6b74] outline-none"
-            />
-          </label>
-        </div>
-      </header>
+      <Navbar1 />
 
       {/* HERO */}
       <section className="glow">

@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Navbar1 from "@/components/blocks/navbar1";
 
 interface ProductDetail {
   slug: string;
@@ -43,6 +44,7 @@ export default function ProductDetailClient({ product }: { product: ProductDetai
     <>
       {/* ===== MOBILE LAYOUT ===== */}
       <div className="lg:hidden min-h-[100dvh] bg-[var(--bg)]">
+        <Navbar1 onSizeGuide={() => setShowSizeChart(true)} />
         {/* Hero Image */}
         <div className="relative w-full aspect-[4/5] bg-[#0d0b10]">
           <img src={activeImg} alt={product.name} className="w-full h-full object-cover" />
@@ -123,20 +125,7 @@ export default function ProductDetailClient({ product }: { product: ProductDetai
 
       {/* ===== DESKTOP LAYOUT ===== */}
       <div className="hidden lg:block">
-        <header className="sticky top-0 z-30 border-b border-[#1b181f] bg-[#0a0a0a]/85 backdrop-blur">
-          <div className="mx-auto max-w-6xl px-6 h-16 flex items-center justify-between">
-            <a href="/" className="flex items-center gap-3">
-              <span className="disp track text-[11px] font-semibold uppercase">Eira Project</span>
-            </a>
-            <nav className="hidden md:flex items-center gap-9 text-[10px] track uppercase text-[var(--muted)]">
-              <a href="/" className="text-[var(--ink)]">Katalog</a>
-              <a href="#" className="hover:text-[var(--ink)] transition">Custom</a>
-              <button type="button" className="hover:text-[var(--ink)] transition" onClick={() => setShowSizeChart(true)}>Size Guide</button>
-              <a href="#" className="hover:text-[var(--ink)] transition">Tentang</a>
-            </nav>
-            <a href="#" className="rounded-full border border-[#2e2a34] px-5 py-2 text-[10px] track uppercase text-[var(--ink)] transition hover:border-[var(--gold)] hover:text-[var(--gold)]">Pre-Order</a>
-          </div>
-        </header>
+        <Navbar1 onSizeGuide={() => setShowSizeChart(true)} />
 
         <main className="mx-auto max-w-6xl px-6 pt-10 pb-20">
           <p className="text-[10px] track uppercase text-[var(--muted)]">
