@@ -1,9 +1,20 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useMemo } from "react";
 import Navbar1 from "@/components/blocks/navbar1";
 
-const PRODUCTS = [
+interface Product {
+  slug: string;
+  name: string;
+  badge: string;
+  series: string;
+  price: string;
+  img: string;
+  status: "available" | "sold";
+  order: number;
+}
+
+const PRODUCTS_RAW: Omit<Product, "order">[] = [
   {
     slug: "velocity-blaze",
     name: "Velocity Blaze",
@@ -11,7 +22,7 @@ const PRODUCTS = [
     series: "Racing Series",
     price: "Rp 195.000",
     img: "/images/e4859694-55d7-4fc5-8941-befeb46d1fde.png",
-    status: "available" as const,
+    status: "available",
   },
   {
     slug: "nebula-flux",
@@ -20,7 +31,7 @@ const PRODUCTS = [
     series: "Football Series",
     price: "Rp 195.000",
     img: "/images/db45a9f9-af41-4cad-9611-6d2be74937af.png",
-    status: "available" as const,
+    status: "available",
   },
   {
     slug: "golden-shards",
@@ -29,9 +40,11 @@ const PRODUCTS = [
     series: "Community Series",
     price: "Rp 195.000",
     img: "/images/75c59814-6786-48b7-a111-d846c580a0a2.png",
-    status: "available" as const,
+    status: "available",
   },
 ];
+
+const PRODUCTS = PRODUCTS_RAW.map((p, i) => ({ ...p, order: i }));
 
 const SOLD_OUT = [
   { name: "Aurora Drift", price: "Rp 195.000", img: "/images/9ac8e2ce-b1f6-4853-b56b-cd1e90a70d2d.png" },
@@ -42,10 +55,63 @@ const SOLD_OUT = [
   { name: "Frost Sigil", price: "Rp 195.000", img: "/images/db45a9f9-af41-4cad-9611-6d2be74937af.png" },
 ];
 
+const SORT_OPTIONS = [
+  { value: "newest", label: "Terbaru" },
+  { value: "oldest", label: "Terlama" },
+  { value: "price-low", label: "Harga Terendah" },
+  { value: "price-high", label: "Harga Tertinggi" },
+  { value: "name-az", label: "Nama A-Z" },
+] as const;
+
+type SortValue = (typeof SORT_OPTIONS)[number]["value"];
+
+function parsePrice(price: string): number {
+  return parseInt(price.replace(/\D/g, ""), 10);
+}
+
+function sortProducts(products: Product[], sort: SortValue): Product[] {
+  const sorted = [...products];
+  switch (sort) {
+    case "newest":
+      return sorted.sort((a, b) => a.order - b.order);
+    case "oldest":
+      return sorted.sort((a, b) => b.order - a.order);
+    case "price-low":
+      return sorted.sort((a, b) => parsePrice(a.price) - parsePrice(b.price));
+    case "price-high":
+      return sorted.sort((a, b) => parsePrice(b.price) - parsePrice(a.price));
+    case "name-az":
+      return sorted.sort((a, b) => a.name.localeCompare(b.name));
+    default:
+      return sorted;
+  }
+}
+
 export default function KatalogClient() {
   const [search, setSearch] = useState("");
+  const [sort, setSort] = useState<SortValue>("newest");
+  const [sortOpen, setSortOpen] = useState(false);
+  const sortRef = useRef<HTMLDivElement>(null);
   const gridRef = useRef<HTMLDivElement>(null);
 
+  const sorted = useMemo(() => sortProducts(PRODUCTS, sort), [sort]);
+
+  const activeLabel = SORT_OPTIONS.find((o) => o.value === sort)?.label ?? "Terbaru";
+
+  // Close dropdown on outside click
+  useEffect(() => {
+    function handleClick(e: MouseEvent) {
+      if (sortRef.current && !sortRef.current.contains(e.target as Node)) {
+        setSortOpen(false);
+      }
+    }
+    if (sortOpen) {
+      document.addEventListener("mousedown", handleClick);
+      return () => document.removeEventListener("mousedown", handleClick);
+    }
+  }, [sortOpen]);
+
+  // Re-observe for reveal animation after sort change
   useEffect(() => {
     const io = new IntersectionObserver(
       (es) =>
@@ -61,7 +127,7 @@ export default function KatalogClient() {
       document.querySelectorAll(".reveal:not(.in)").forEach((el) => io.observe(el));
     }, 50);
     return () => { clearTimeout(timer); io.disconnect(); };
-  }, []);
+  }, [sort]);
 
   return (
     <>
@@ -82,10 +148,53 @@ export default function KatalogClient() {
       </section>
 
       <main id="katalog" className="mx-auto max-w-6xl px-6 pb-24">
-        {/* Sort */}
+        {/* Sort Dropdown */}
         <div className="flex items-center justify-end -mt-2">
-          <div className="flex items-center gap-2 rounded-full border border-[var(--line)] px-4 py-2 text-[10px] track uppercase text-[var(--muted)]">
-            <span>Urut:</span><span className="text-[var(--ink)]">Terbaru</span>
+          <div ref={sortRef} className="relative">
+            <button
+              type="button"
+              onClick={() => setSortOpen(!sortOpen)}
+              className="flex items-center gap-2 rounded-full border border-[var(--line)] px-4 py-2 text-[10px] track uppercase text-[var(--muted)] hover:border-[var(--gold)] hover:text-[var(--ink)] transition-colors cursor-pointer"
+            >
+              <span>Urutkan:</span>
+              <span className="text-[var(--ink)]">{activeLabel}</span>
+              <svg
+                width="10"
+                height="10"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className={`transition-transform duration-200 ${sortOpen ? "rotate-180" : ""}`}
+              >
+                <path d="M6 9l6 6 6-6" />
+              </svg>
+            </button>
+
+            {sortOpen && (
+              <div className="absolute right-0 mt-2 w-48 rounded-2xl border border-[var(--line)] bg-[var(--panel)] shadow-[0_16px_48px_rgba(0,0,0,.5)] overflow-hidden z-50">
+                {SORT_OPTIONS.map((opt) => (
+                  <button
+                    key={opt.value}
+                    type="button"
+                    onClick={() => {
+                      setSort(opt.value);
+                      setSortOpen(false);
+                    }}
+                    className={[
+                      "w-full text-left px-4 py-2.5 text-[11px] transition-colors cursor-pointer",
+                      sort === opt.value
+                        ? "text-[var(--gold)] bg-white/5"
+                        : "text-[var(--muted)] hover:text-[var(--ink)] hover:bg-white/5",
+                    ].join(" ")}
+                  >
+                    {opt.label}
+                  </button>
+                ))}
+              </div>
+            )}
           </div>
         </div>
 
@@ -93,13 +202,13 @@ export default function KatalogClient() {
         <div className="mt-10 flex items-end justify-between">
           <div>
             <h2 className="disp track-sm text-[13px] font-semibold uppercase">Desain Terbaru</h2>
-            <p className="mt-2 text-[10px] track uppercase text-[var(--muted)]">{PRODUCTS.length} Desain</p>
+            <p className="mt-2 text-[10px] track uppercase text-[var(--muted)]">{sorted.length} Desain</p>
           </div>
           <span className="text-[10px] track uppercase text-[var(--gold)]">Tersedia</span>
         </div>
 
         <div ref={gridRef} className="mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-          {PRODUCTS.map((p, i) => (
+          {sorted.map((p, i) => (
             <article
               key={p.slug}
               className="card group overflow-hidden reveal"
