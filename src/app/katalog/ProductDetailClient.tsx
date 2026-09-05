@@ -282,7 +282,7 @@ export default function ProductDetailClient({ product }: { product: ProductDetai
 
         <footer className="border-t border-[var(--line)]">
           <div className="mx-auto max-w-6xl px-6 py-10 flex items-center justify-center">
-            <span className="disp track text-[10px] uppercase text-[var(--muted)]">Eira Project — Fantasy Jersey</span>
+            <span className="disp track text-[10px] uppercase text-[var(--muted)]">© 2026 Eira Project · Fantasy Jersey Specialist</span>
           </div>
         </footer>
       </div>

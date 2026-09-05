@@ -249,9 +249,8 @@ export default function KatalogClient({
 
       {/* FOOTER */}
       <footer className="border-t border-[var(--line)]">
-        <div className="mx-auto max-w-6xl px-6 py-10 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <span className="disp track text-[10px] uppercase text-[var(--muted)]">Eira Project — Fantasy Jersey</span>
-          <span className="text-[10px] track uppercase text-[var(--muted)]">Made to order · Milano Dryfit</span>
+        <div className="mx-auto max-w-6xl px-6 py-10 flex items-center justify-center">
+          <span className="disp track text-[10px] uppercase text-[var(--muted)]">© 2026 Eira Project · Fantasy Jersey Specialist</span>
         </div>
       </footer>
     </>
