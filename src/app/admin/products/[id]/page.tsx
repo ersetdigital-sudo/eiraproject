@@ -2,7 +2,7 @@
 
 import { useEffect, useState, useCallback } from "react";
 import { useRouter, useParams } from "next/navigation";
-import { supabase } from "@/lib/supabase";
+import { createClient } from "@/lib/supabase/client";
 import type { ProductImage } from "@/lib/types";
 
 interface FormData {
@@ -45,6 +45,7 @@ export default function EditProductPage() {
 
   useEffect(() => {
     if (!params?.id) return;
+    const supabase = createClient();
     supabase
       .from("products")
       .select("*, product_images(*)")
@@ -102,6 +103,7 @@ export default function EditProductPage() {
         const uploadData = await uploadRes.json();
 
         if (uploadData.secure_url) {
+          const supabase = createClient();
           const { data: imgData } = await supabase
             .from("product_images")
             .insert({
@@ -131,6 +133,7 @@ export default function EditProductPage() {
       body: JSON.stringify({ public_id: publicId }),
     });
 
+    const supabase = createClient();
     await supabase.from("product_images").delete().eq("id", img.id);
     setImages((prev) => prev.filter((i) => i.id !== img.id));
   }
@@ -139,6 +142,7 @@ export default function EditProductPage() {
     e.preventDefault();
     setSaving(true);
 
+    const supabase = createClient();
     const { error } = await supabase
       .from("products")
       .update({
